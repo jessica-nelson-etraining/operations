@@ -1,0 +1,7 @@
+.env
+*.env
+credentials.json
+token.json
+.tmp/
+desktop.ini
+.claude/settings.local.json

@@ -1,0 +1,794 @@
+/**
+ * WP AI Theme Editor — Admin Styles
+ * All selectors prefixed with wpai- to avoid conflicts with other plugins.
+ * Uses WordPress admin color variables where possible for visual consistency.
+ */
+
+/* ── Layout ─────────────────────────────────────────────────────────────────── */
+
+#wpai-editor {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 13px;
+    color: #2c3338;
+    max-width: 1600px;
+}
+
+.wpai-header-links {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+/* ── How to use section ─────────────────────────────────────────────────────── */
+
+.wpai-help-section {
+    background: #f0f6fc;
+    border: 1px solid #c5d9ed;
+    border-radius: 6px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+}
+
+.wpai-help-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+}
+
+.wpai-help-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #2c3338;
+}
+
+.wpai-help-icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    background: #0073aa;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+}
+
+.wpai-help-item strong { color: #1d2327; display: block; margin-bottom: 2px; }
+
+.wpai-help-title {
+    margin: 0 0 16px;
+    font-size: 14px;
+    color: #1d2327;
+    font-weight: 600;
+}
+
+.wpai-help-tips {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid #c5d9ed;
+    font-size: 12px;
+    color: #50575e;
+    line-height: 1.7;
+}
+.wpai-help-tips kbd {
+    background: #e8f0f8;
+    border: 1px solid #b3cde0;
+    border-radius: 3px;
+    padding: 1px 5px;
+    font-size: 11px;
+}
+
+/* ── Dirty / unsaved indicator ──────────────────────────────────────────────── */
+
+.wpai-dirty-indicator {
+    font-size: 11px;
+    font-weight: 600;
+    color: #d97706;
+    background: #fef3c7;
+    border: 1px solid #fcd34d;
+    border-radius: 3px;
+    padding: 2px 7px;
+    flex-shrink: 0;
+}
+
+.wpai-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 16px 0 20px;
+    gap: 16px;
+}
+
+.wpai-title {
+    margin: 0;
+    font-size: 23px;
+    font-weight: 400;
+    line-height: 1.3;
+    color: #1d2327;
+}
+
+.wpai-settings-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: #50575e;
+    text-decoration: none;
+    font-size: 13px;
+    padding: 5px 10px;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+    background: #f6f7f7;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+.wpai-settings-link:hover {
+    background: #e6e6e6;
+    color: #1d2327;
+    border-color: #a7aaad;
+}
+
+/* ── File Browser ───────────────────────────────────────────────────────────── */
+
+.wpai-file-browser {
+    background: #fff;
+    border: 1px solid #dcdcde;
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin-bottom: 16px;
+}
+
+.wpai-file-browser-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.wpai-select {
+    flex: 1;
+    max-width: 600px;
+    height: 36px;
+    border: 1px solid #8c8f94;
+    border-radius: 4px;
+    padding: 0 8px;
+    font-size: 13px;
+    color: #2c3338;
+    background: #fff;
+}
+.wpai-select:focus {
+    border-color: #0073aa;
+    outline: none;
+    box-shadow: 0 0 0 1px #0073aa;
+}
+
+.wpai-file-info {
+    margin-top: 8px;
+    font-size: 12px;
+    color: #757575;
+}
+
+/* ── Two-column layout ──────────────────────────────────────────────────────── */
+
+.wpai-columns {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+.wpai-col-code {
+    flex: 0 0 62%;
+    min-width: 0;
+}
+
+.wpai-col-chat {
+    flex: 0 0 calc(38% - 16px);
+    min-width: 280px;
+    position: sticky;
+    top: 32px;
+}
+
+/* ── Panels ─────────────────────────────────────────────────────────────────── */
+
+.wpai-panel {
+    background: #fff;
+    border: 1px solid #dcdcde;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.wpai-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px 14px;
+    background: #f6f7f7;
+    border-bottom: 1px solid #dcdcde;
+    font-weight: 600;
+    font-size: 13px;
+    color: #1d2327;
+    min-height: 42px;
+}
+
+.wpai-filename {
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    font-size: 12px;
+    font-weight: 400;
+    color: #1d2327;
+}
+
+.wpai-panel-actions {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+/* ── Code editor ────────────────────────────────────────────────────────────── */
+
+.wpai-editor-wrap {
+    position: relative;
+}
+
+.wpai-editor-wrap .CodeMirror {
+    height: 520px;
+    font-size: 13px;
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    line-height: 1.6;
+    border-radius: 0;
+}
+
+/* Highlighted lines (question mode) */
+.wpai-editor-wrap .CodeMirror .wpai-highlight {
+    background: rgba(255, 220, 0, 0.25);
+}
+
+/* ── Buttons ────────────────────────────────────────────────────────────────── */
+
+.wpai-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 7px 14px;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: background 0.12s, border-color 0.12s;
+    white-space: nowrap;
+    text-decoration: none;
+    line-height: 1.4;
+}
+.wpai-btn:focus {
+    outline: 2px solid #0073aa;
+    outline-offset: 2px;
+}
+
+.wpai-btn-primary {
+    background: #0073aa;
+    color: #fff;
+    border-color: #0073aa;
+}
+.wpai-btn-primary:hover { background: #005a87; border-color: #005a87; color: #fff; }
+
+.wpai-btn-edit {
+    background: #d97706;
+    color: #fff;
+    border-color: #d97706;
+}
+.wpai-btn-edit:hover { background: #b45309; border-color: #b45309; color: #fff; }
+
+.wpai-btn-success {
+    background: #00a32a;
+    color: #fff;
+    border-color: #00a32a;
+}
+.wpai-btn-success:hover { background: #008a20; border-color: #008a20; color: #fff; }
+
+.wpai-btn-danger {
+    background: #fff0f0;
+    color: #b32d2e;
+    border-color: #f4b8b8;
+}
+.wpai-btn-danger:hover { background: #fce8e8; }
+
+.wpai-btn-secondary {
+    background: #f0f0f1;
+    color: #2c3338;
+    border-color: #c3c4c7;
+}
+.wpai-btn-secondary:hover { background: #e0e0e0; }
+
+.wpai-btn-small {
+    padding: 4px 10px;
+    font-size: 12px;
+}
+
+.wpai-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ── Mode toggle ────────────────────────────────────────────────────────────── */
+
+.wpai-mode-toggle {
+    display: flex;
+    gap: 2px;
+    background: #e6e6e6;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+.wpai-mode-label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    color: #50575e;
+    transition: background 0.12s, color 0.12s;
+    user-select: none;
+}
+
+.wpai-mode-label input[type="radio"] {
+    display: none;
+}
+
+.wpai-mode-label.wpai-mode-active {
+    background: #fff;
+    color: #1d2327;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+}
+
+/* ── Chat panel ─────────────────────────────────────────────────────────────── */
+
+.wpai-chat-panel {
+    display: flex;
+    flex-direction: column;
+    height: 568px; /* matches editor height + header */
+}
+
+.wpai-chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.wpai-chat-intro {
+    color: #50575e;
+    font-size: 12px;
+    line-height: 1.6;
+}
+.wpai-chat-intro p { margin: 0 0 8px; }
+.wpai-chat-intro p:last-child { margin: 0; }
+.wpai-chat-tip {
+    color: #a7aaad;
+    font-style: italic;
+}
+.wpai-chat-tip kbd {
+    background: #f0f0f1;
+    border: 1px solid #c3c4c7;
+    border-radius: 3px;
+    padding: 1px 4px;
+    font-size: 11px;
+    font-style: normal;
+}
+
+.wpai-chat-message {
+    max-width: 100%;
+    padding: 10px 13px;
+    border-radius: 6px;
+    font-size: 13px;
+    line-height: 1.6;
+    word-wrap: break-word;
+}
+
+.wpai-chat-user {
+    background: #0073aa;
+    color: #fff;
+    align-self: flex-end;
+    border-radius: 6px 6px 2px 6px;
+}
+
+.wpai-chat-ai {
+    background: #f6f7f7;
+    border: 1px solid #e6e6e6;
+    color: #2c3338;
+    align-self: flex-start;
+    border-radius: 6px 6px 6px 2px;
+}
+
+.wpai-chat-ai strong { color: #1d2327; }
+.wpai-chat-ai em { color: #757575; }
+
+.wpai-chat-input-wrap {
+    border-top: 1px solid #dcdcde;
+    padding: 12px;
+    flex-shrink: 0;
+}
+
+.wpai-chat-input {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #8c8f94;
+    border-radius: 4px;
+    padding: 8px 10px;
+    font-size: 13px;
+    color: #2c3338;
+    font-family: inherit;
+    resize: none;
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+.wpai-chat-input:focus {
+    border-color: #0073aa;
+    outline: none;
+    box-shadow: 0 0 0 1px #0073aa;
+}
+.wpai-chat-input:disabled {
+    background: #f6f7f7;
+    color: #a7aaad;
+}
+
+.wpai-chat-controls {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
+/* ── Backups dropdown ───────────────────────────────────────────────────────── */
+
+.wpai-backup-wrap {
+    position: relative;
+}
+
+.wpai-dropdown {
+    position: absolute;
+    top: calc(100% + 4px);
+    right: 0;
+    width: 300px;
+    background: #fff;
+    border: 1px solid #dcdcde;
+    border-radius: 6px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    z-index: 100;
+}
+
+.wpai-dropdown-inner {
+    padding: 12px;
+    max-height: 280px;
+    overflow-y: auto;
+}
+
+.wpai-dropdown-loading,
+.wpai-dropdown-empty,
+.wpai-dropdown-error {
+    margin: 0;
+    font-size: 12px;
+    color: #757575;
+    text-align: center;
+    padding: 12px 0;
+}
+.wpai-dropdown-error { color: #b32d2e; }
+
+.wpai-backup-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.wpai-backup-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px 0;
+    border-bottom: 1px solid #f0f0f1;
+    font-size: 12px;
+    gap: 8px;
+}
+.wpai-backup-item:last-child { border-bottom: none; }
+
+.wpai-backup-label { color: #50575e; flex: 1; }
+
+.wpai-restore-link {
+    color: #0073aa;
+    text-decoration: none;
+    font-weight: 500;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+.wpai-restore-link:hover { text-decoration: underline; }
+
+/* ── Diff panel ─────────────────────────────────────────────────────────────── */
+
+.wpai-diff-panel {
+    margin-bottom: 16px;
+}
+
+.wpai-diff-summary-text {
+    font-size: 12px;
+    font-weight: 400;
+    color: #50575e;
+    font-style: italic;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 500px;
+}
+
+.wpai-diff-container {
+    padding: 0;
+    overflow-x: auto;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+/* diff2html overrides for WordPress admin */
+.wpai-diff-container .d2h-wrapper { margin: 0; }
+.wpai-diff-container .d2h-file-header { padding: 8px 14px; background: #f6f7f7; }
+.wpai-diff-container .d2h-code-line-ctn { font-size: 12px; }
+.wpai-diff-container .d2h-code-side-linenumber { font-size: 11px; }
+
+.wpai-diff-actions {
+    display: flex;
+    gap: 10px;
+    padding: 12px 14px;
+    border-top: 1px solid #dcdcde;
+    background: #f6f7f7;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* ── Notices ─────────────────────────────────────────────────────────────────── */
+
+.wpai-notices {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 420px;
+}
+
+.wpai-notice {
+    border-radius: 4px !important;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.15) !important;
+    margin: 0 !important;
+    animation: wpaiSlideIn 0.2s ease;
+}
+
+@keyframes wpaiSlideIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Loading overlay ─────────────────────────────────────────────────────────── */
+
+.wpai-loading-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.3);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wpai-loading-inner {
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #1d2327;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+}
+
+.wpai-loading-inner .spinner {
+    float: none;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+/* ── Responsive collapse ─────────────────────────────────────────────────────── */
+
+@media screen and (max-width: 1100px) {
+    .wpai-columns {
+        flex-direction: column;
+    }
+    .wpai-col-code,
+    .wpai-col-chat {
+        flex: none;
+        width: 100%;
+    }
+    .wpai-col-chat {
+        position: static;
+    }
+    .wpai-chat-panel {
+        height: auto;
+        min-height: 360px;
+    }
+}
+
+/* ── New File / Child Theme Modal ────────────────────────────────────────────── */
+
+.wpai-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+
+.wpai-modal {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    max-width: 560px;
+    max-height: 90vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.wpai-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+.wpai-modal-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+    padding: 0;
+    color: #1d2327;
+}
+
+.wpai-modal-close {
+    background: none;
+    border: none;
+    font-size: 22px;
+    line-height: 1;
+    color: #666;
+    cursor: pointer;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+.wpai-modal-close:hover { background: #f0f0f0; color: #1d2327; }
+
+/* Tabs */
+.wpai-modal-tabs {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    padding: 0 20px;
+    gap: 0;
+}
+
+.wpai-modal-tab {
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    padding: 10px 14px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #666;
+    cursor: pointer;
+    margin-bottom: -1px;
+}
+.wpai-modal-tab:hover { color: #2271b1; }
+.wpai-modal-tab-active {
+    color: #2271b1;
+    border-bottom-color: #2271b1;
+}
+
+/* Body / form */
+.wpai-modal-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.wpai-form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.wpai-form-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1d2327;
+}
+
+.wpai-form-input,
+.wpai-form-select {
+    width: 100%;
+    padding: 7px 10px;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+    font-size: 13px;
+    color: #1d2327;
+    box-sizing: border-box;
+}
+.wpai-form-input:focus,
+.wpai-form-select:focus {
+    border-color: #2271b1;
+    outline: 2px solid #b5d0ec;
+    outline-offset: 0;
+}
+
+.wpai-form-textarea {
+    width: 100%;
+    padding: 7px 10px;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+    font-size: 13px;
+    color: #1d2327;
+    resize: vertical;
+    box-sizing: border-box;
+}
+.wpai-form-textarea:focus {
+    border-color: #2271b1;
+    outline: 2px solid #b5d0ec;
+    outline-offset: 0;
+}
+
+.wpai-form-hint {
+    font-size: 12px;
+    color: #646970;
+    margin: 0;
+}
+
+.wpai-radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.wpai-radio-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: #1d2327;
+    cursor: pointer;
+}
+
+.wpai-modal-actions {
+    display: flex;
+    gap: 8px;
+    padding-top: 4px;
+}
+
+/* "＋ New" button next to Load File */
+#wpai-new-file-btn {
+    white-space: nowrap;
+}

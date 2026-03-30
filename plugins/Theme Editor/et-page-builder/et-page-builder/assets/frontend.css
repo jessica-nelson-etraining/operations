@@ -1,0 +1,650 @@
+/**
+ * Core Blocks — Frontend Styles
+ * Uses the same CSS variable system as the eTraining theme.
+ */
+
+:root {
+    --cb-teal:      #3fd0c9;
+    --cb-teal-dark: #2ab5ae;
+    --cb-teal-pale: #e8faf9;
+    --cb-navy:      #0b1b2c;
+    --cb-gray:      #495057;
+    --cb-gray-lt:   #6c757d;
+    --cb-off-white: #f8fafc;
+    --cb-border:    #dde6ee;
+}
+
+/* ── Section wrapper ─────────────────────────────────────────────────────────── */
+
+.cb-section {
+    padding: 68px 0;
+}
+
+/* ── Background variants ─────────────────────────────────────────────────────── */
+
+.cb-bg-white         { background: #fff; }
+.cb-bg-off-white     { background: var(--cb-off-white); }
+.cb-bg-dark          { background: linear-gradient(135deg, #051c2d 0%, #0b1b2c 100%); }
+.cb-bg-teal          { background: linear-gradient(135deg, #b8ebe8 0%, #c2f5c9 55%, #eafff4 100%); }
+.cb-bg-teal-gradient { background: linear-gradient(135deg, #b8ebe8 0%, #c2f5c9 55%, #eafff4 100%); }
+
+/* ── Typography ──────────────────────────────────────────────────────────────── */
+
+.cb-subheading {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(90deg, #3fd0c9 0%, #70f07f 100%);
+    color: #051c2d;
+    font-family: "Urbanist", sans-serif;
+    font-weight: 700;
+    font-size: 0.74rem;
+    padding: 5px 13px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+}
+
+.cb-subheading--dark {
+    background: rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.9);
+}
+
+.cb-heading {
+    font-family: "Urbanist", sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.7rem, 3.3vw, 2.3rem);
+    color: var(--cb-navy);
+    line-height: 1.2;
+    margin-bottom: 16px;
+}
+
+.cb-heading--dark {
+    color: #fff;
+}
+
+.cb-body {
+    color: var(--cb-gray);
+    font-size: 0.97rem;
+    line-height: 1.78;
+}
+
+.cb-body--dark {
+    color: rgba(255,255,255,0.75);
+}
+
+.cb-body p {
+    margin-bottom: 1em;
+}
+
+.cb-body p:last-child {
+    margin-bottom: 0;
+}
+
+/* ── Buttons ─────────────────────────────────────────────────────────────────── */
+
+.cb-btn {
+    display: inline-block;
+    font-family: "Urbanist", sans-serif;
+    font-weight: 800;
+    font-size: 0.85rem;
+    padding: 14px 32px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    transition: all 0.2s;
+    text-decoration: none;
+}
+
+.cb-btn--teal {
+    background: linear-gradient(90deg, #3fd0c9 0%, #70f07f 100%);
+    color: #051c2d;
+}
+
+.cb-btn--teal:hover {
+    background: linear-gradient(90deg, #6ff081 0.1%, #42d2c4 99.9%);
+    color: #051c2d;
+    transform: translateY(-1px);
+    box-shadow: 0 5px 18px rgba(63,208,201,0.35);
+}
+
+.cb-btn--dark {
+    background: linear-gradient(90deg, #067b5a 0%, #051c2d 100%);
+    color: #fff;
+}
+
+.cb-btn--dark:hover {
+    background: linear-gradient(90deg, #3fd0c9 0%, #70f07f 100%);
+    color: #051c2d;
+    transform: translateY(-1px);
+}
+
+/* ── CTA Banner ──────────────────────────────────────────────────────────────── */
+
+.cb-cta-banner {
+    text-align: center;
+}
+
+.cb-cta-heading {
+    font-family: "Urbanist", sans-serif;
+    font-weight: 900;
+    font-size: clamp(1.9rem, 3.8vw, 2.6rem);
+    color: var(--cb-navy);
+    margin-bottom: 14px;
+    line-height: 1.1;
+}
+
+.cb-cta-subtext {
+    color: var(--cb-gray);
+    font-size: 0.97rem;
+    max-width: 520px;
+    margin: 0 auto 28px;
+    line-height: 1.65;
+}
+
+/* Trust pills row */
+.cb-trust-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 24px;
+}
+
+.cb-trust-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(11,27,44,0.08);
+    border: 1px solid rgba(11,27,44,0.15);
+    color: var(--cb-gray);
+    font-family: "Urbanist", sans-serif;
+    font-weight: 600;
+    font-size: 0.78rem;
+    padding: 8px 16px;
+    border-radius: 100px;
+}
+
+.cb-trust-pill i {
+    color: var(--cb-teal-dark);
+}
+
+.cb-trust-pill--dark {
+    background: rgba(255,255,255,0.12);
+    border-color: rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.85);
+}
+
+.cb-trust-pill--dark i {
+    color: var(--cb-teal);
+}
+
+/* ── Two Column Layout ───────────────────────────────────────────────────────── */
+
+.cb-two-col-image {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(16,40,58,0.12);
+}
+
+.cb-text-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────────── */
+
+@media ( max-width: 767px ) {
+    .cb-section {
+        padding: 44px 0;
+    }
+}
+
+/* ── Comparison Table ────────────────────────────────────────────────────────── */
+
+.cb-comparison-wrap {
+    overflow-x: auto; /* Scroll on small screens */
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(16, 40, 58, 0.08);
+    border: 1px solid var(--cb-border);
+}
+
+.cb-comp-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    min-width: 600px; /* Prevents squishing on mobile before scroll kicks in */
+}
+
+/* ── Header row ── */
+.cb-comp-th {
+    padding: 14px 20px;
+    text-align: left;
+    font-family: "Urbanist", sans-serif;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: var(--cb-navy);
+    color: #fff;
+    border: none;
+}
+
+.cb-comp-th--feature {
+    width: 38%;
+    background: var(--cb-navy);
+    border-radius: 12px 0 0 0;
+}
+
+/* Brand column header — highlighted teal */
+.cb-comp-th--brand {
+    background: linear-gradient(90deg, #3fd0c9 0%, #70f07f 100%);
+    color: #051c2d;
+    text-align: center;
+}
+
+.cb-comp-th--alt {
+    background: var(--cb-navy);
+    text-align: center;
+}
+
+.cb-comp-th:last-child {
+    border-radius: 0 12px 0 0;
+}
+
+/* ── Body rows ── */
+.cb-comp-row {
+    border-bottom: 1px solid var(--cb-border);
+    transition: background 0.12s;
+}
+
+.cb-comp-row:last-child {
+    border-bottom: none;
+}
+
+.cb-comp-row:nth-child(even) {
+    background: #fafbfc;
+}
+
+.cb-comp-row:hover {
+    background: var(--cb-teal-pale) !important;
+}
+
+.cb-comp-td {
+    padding: 16px 20px;
+    color: var(--cb-gray);
+    vertical-align: middle;
+    text-align: center;
+    background: #fff;
+}
+
+.cb-comp-row:nth-child(even) .cb-comp-td {
+    background: #fafbfc;
+}
+
+.cb-comp-row:hover .cb-comp-td {
+    background: var(--cb-teal-pale) !important;
+}
+
+/* Feature name column — left-aligned, darker */
+.cb-comp-td--feature {
+    text-align: left;
+    font-weight: 600;
+    color: var(--cb-navy);
+    font-size: 0.88rem;
+}
+
+/* Brand column cells — very subtle teal tint */
+.cb-comp-td--brand {
+    background: rgba(63, 208, 201, 0.05) !important;
+    border-left: 2px solid rgba(63, 208, 201, 0.25);
+    border-right: 2px solid rgba(63, 208, 201, 0.25);
+}
+
+.cb-comp-row:hover .cb-comp-td--brand {
+    background: var(--cb-teal-pale) !important;
+}
+
+@media ( max-width: 767px ) {
+    .cb-comp-th, .cb-comp-td {
+        padding: 12px 14px;
+    }
+}
+
+/* ── Testimonials ─────────────────────────────────────────────────────────── */
+
+.cb-testimonial-card {
+    background: #fff;
+    border: 1px solid var(--cb-border);
+    border-radius: 16px;
+    padding: 28px 28px 24px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 16px rgba(16, 40, 58, 0.07);
+    transition: transform 0.18s, box-shadow 0.18s;
+}
+
+.cb-testimonial-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(16, 40, 58, 0.12);
+}
+
+.cb-testimonial-card--dark {
+    background: rgba(255,255,255,0.06);
+    border-color: rgba(255,255,255,0.12);
+}
+
+/* Stars */
+.cb-stars {
+    display: flex;
+    gap: 3px;
+    margin-bottom: 14px;
+}
+
+.cb-star--filled {
+    color: #f5a623;
+    font-size: 0.9rem;
+}
+
+.cb-star--empty {
+    color: rgba(0,0,0,0.2);
+    font-size: 0.9rem;
+}
+
+.cb-testimonial-card--dark .cb-star--empty {
+    color: rgba(255,255,255,0.2);
+}
+
+/* Quote */
+.cb-testimonial-quote {
+    font-family: "Urbanist", sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--cb-gray);
+    flex: 1;
+    margin: 0 0 20px;
+    font-style: italic;
+    border: none;
+    padding: 0;
+}
+
+.cb-testimonial-quote--dark {
+    color: rgba(255,255,255,0.78);
+}
+
+/* Author row */
+.cb-testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-top: 16px;
+    border-top: 1px solid var(--cb-border);
+    margin-top: auto;
+}
+
+.cb-testimonial-card--dark .cb-testimonial-author {
+    border-top-color: rgba(255,255,255,0.12);
+}
+
+.cb-testimonial-photo {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.cb-testimonial-initials {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3fd0c9 0%, #70f07f 100%);
+    color: #051c2d;
+    font-family: "Urbanist", sans-serif;
+    font-weight: 800;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.cb-testimonial-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.cb-testimonial-name {
+    font-family: "Urbanist", sans-serif;
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: var(--cb-navy);
+}
+
+.cb-testimonial-name--dark {
+    color: #fff;
+}
+
+.cb-testimonial-role {
+    font-size: 0.78rem;
+    color: var(--cb-gray-lt);
+}
+
+.cb-testimonial-role--dark {
+    color: rgba(255,255,255,0.55);
+}
+
+/* ── Our Guarantee ───────────────────────────────────────────────────────── */
+
+.cb-guarantee-badge {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 160px;
+    height: 160px;
+}
+
+.cb-guarantee-icon {
+    font-size: 160px;
+    line-height: 1;
+    background: linear-gradient(135deg, #3fd0c9 0%, #70f07f 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.cb-guarantee-badge--dark .cb-guarantee-icon {
+    opacity: 0.9;
+}
+
+.cb-guarantee-number {
+    position: relative;
+    z-index: 1;
+    font-family: "Urbanist", sans-serif;
+    font-weight: 900;
+    font-size: 2.8rem;
+    color: #fff;
+    line-height: 1;
+    margin-top: 38px;
+    text-shadow: 0 2px 8px rgba(5, 28, 45, 0.4);
+}
+
+.cb-guarantee-label {
+    position: relative;
+    z-index: 1;
+    font-family: "Urbanist", sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.85);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 2px;
+}
+
+/* Light background variant */
+.cb-guarantee-badge:not(.cb-guarantee-badge--dark) .cb-guarantee-number {
+    color: var(--cb-navy);
+    text-shadow: none;
+}
+
+.cb-guarantee-badge:not(.cb-guarantee-badge--dark) .cb-guarantee-label {
+    color: var(--cb-gray);
+}
+
+/* Guarantee checklist */
+.cb-guarantee-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cb-guarantee-point {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-family: "Urbanist", sans-serif;
+    font-size: 0.93rem;
+    color: var(--cb-gray);
+    line-height: 1.5;
+}
+
+.cb-guarantee-point--dark {
+    color: rgba(255,255,255,0.8);
+}
+
+.cb-guarantee-check {
+    color: var(--cb-teal);
+    font-size: 1rem;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+@media ( max-width: 991px ) {
+    .cb-guarantee-badge {
+        margin-bottom: 24px;
+    }
+}
+
+/* ── Media Blocks ─────────────────────────────────────────────────────────── */
+
+.etpb-image-figure {
+    margin: 0;
+    display: block;
+}
+
+.etpb-single-image {
+    border-radius: 8px;
+    display: block;
+}
+
+.etpb-image-caption {
+    display: block;
+    text-align: center;
+    font-size: 0.82rem;
+    color: var(--cb-gray-lt);
+    margin-top: 8px;
+    font-style: italic;
+}
+
+.etpb-gallery-item {
+    margin: 0;
+    display: block;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.etpb-gallery-img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+    transition: transform 0.2s;
+}
+
+.etpb-gallery-item:hover .etpb-gallery-img {
+    transform: scale(1.02);
+}
+
+/* Video embed — responsive 16:9 wrapper */
+.etpb-video-responsive {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(16,40,58,0.15);
+}
+
+.etpb-video-responsive iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.etpb-video-caption {
+    font-size: 0.85rem;
+    color: var(--cb-gray-lt);
+    font-style: italic;
+}
+
+/* Iframe embed */
+.etpb-iframe-wrap {
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid var(--cb-border);
+}
+
+.etpb-iframe-wrap iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border: none;
+}
+
+/* Layout section — frontend */
+.etpb-layout-section .etpb-layout-col > .cb-section,
+.etpb-layout-section .etpb-layout-col > section {
+    padding: 0 !important; /* remove double padding inside layout columns */
+}
+
+/* ── Background image support ────────────────────────────────────────────── */
+
+.etpb-has-bg-image {
+    position: relative;
+    background-repeat: no-repeat;
+}
+
+.etpb-bg-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Ensure section content sits above the overlay */
+.etpb-has-bg-image .etpb-bg-content,
+.etpb-has-bg-image > .container,
+.etpb-has-bg-image > .container-fluid {
+    position: relative;
+    z-index: 1;
+}

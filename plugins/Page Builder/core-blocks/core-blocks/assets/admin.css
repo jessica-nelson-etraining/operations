@@ -1,0 +1,56 @@
+/**
+ * Core Blocks — Admin Styles
+ * Matches Course Landing Blocks v2 admin styling but uses cb- prefix throughout.
+ */
+
+#cb-editor { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 13px; color: #2c3338; }
+.cb-intro { background: #f0f6fc; border-left: 4px solid #0073aa; padding: 14px 18px; margin-bottom: 20px; border-radius: 0 4px 4px 0; line-height: 1.6; }
+.cb-block-row { background: #fff; border: 1px solid #dcdcde; border-radius: 6px; margin-bottom: 10px; overflow: hidden; transition: box-shadow 0.15s; }
+.cb-block-row:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.cb-block-header { display: flex; align-items: center; gap: 10px; padding: 12px 16px; background: #f6f7f7; border-bottom: 1px solid #dcdcde; user-select: none; }
+.cb-drag-handle { cursor: grab; color: #a7aaad; font-size: 20px; flex-shrink: 0; }
+.cb-drag-handle:active { cursor: grabbing; }
+.cb-block-icon { font-size: 18px; flex-shrink: 0; }
+.cb-block-title { flex: 1; font-weight: 600; font-size: 14px; color: #1d2327; }
+.cb-block-actions { display: flex; gap: 6px; flex-shrink: 0; }
+.cb-block-fields { padding: 18px; background: #fff; }
+.cb-fields-desc { font-size: 12px; color: #757575; margin: 0 0 16px; font-style: italic; }
+.cb-field { margin-bottom: 18px; }
+.cb-field:last-child { margin-bottom: 0; }
+.cb-field-label { display: block; font-weight: 600; font-size: 13px; margin-bottom: 4px; color: #1d2327; }
+.cb-field-desc { font-size: 12px; color: #757575; margin: 0 0 6px; line-height: 1.5; }
+.cb-input, .cb-textarea, .cb-select { display: block; width: 100%; box-sizing: border-box; border: 1px solid #8c8f94; border-radius: 4px; padding: 8px 10px; font-size: 13px; color: #2c3338; background: #fff; }
+.cb-input:focus, .cb-textarea:focus, .cb-select:focus { border-color: #0073aa; outline: none; box-shadow: 0 0 0 1px #0073aa; }
+.cb-textarea { min-height: 80px; resize: vertical; }
+.cb-btn-add { display: block; width: 100%; background: #0073aa; color: #fff; border: none; padding: 12px 16px; font-size: 14px; font-weight: 500; border-radius: 4px; cursor: pointer; margin-top: 6px; }
+.cb-btn-add:hover { background: #005a87; }
+.cb-btn-toggle-fields { background: #f0f0f1; border: 1px solid #c3c4c7; color: #2c3338; padding: 5px 12px; border-radius: 4px; cursor: pointer; font-size: 12px; font-weight: 500; }
+.cb-btn-toggle-fields:hover { background: #e0e0e0; }
+.cb-btn-remove { background: #fff0f0; border: 1px solid #f4b8b8; color: #b32d2e; padding: 5px 12px; border-radius: 4px; cursor: pointer; font-size: 12px; font-weight: 500; }
+.cb-btn-remove:hover { background: #fce8e8; }
+.cb-btn-cancel { background: #f0f0f1; border: 1px solid #c3c4c7; color: #2c3338; width: 100%; padding: 10px 16px; margin-top: 12px; font-size: 13px; border-radius: 4px; cursor: pointer; }
+.cb-btn-cancel:hover { background: #e0e0e0; }
+.cb-btn-add-item { display: block; width: 100%; background: transparent; border: 1px dashed #0073aa; color: #0073aa; padding: 7px 12px; border-radius: 4px; cursor: pointer; font-size: 12px; margin-top: 8px; text-align: center; }
+.cb-btn-add-item:hover { background: #f0f6fc; }
+.cb-block-picker { background: #f0f6fc; border: 2px dashed #0073aa; border-radius: 6px; padding: 20px; margin-top: 12px; }
+.cb-block-picker h3 { margin: 0 0 4px; font-size: 15px; }
+.cb-picker-sub { margin: 0 0 16px; color: #757575; font-size: 12px; }
+.cb-block-picker-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(175px, 1fr)); gap: 12px; margin-bottom: 4px; }
+.cb-block-option { background: #fff; border: 2px solid #dcdcde; border-radius: 6px; padding: 16px 12px; cursor: pointer; text-align: center; transition: border-color 0.15s, box-shadow 0.15s; }
+.cb-block-option:hover { border-color: #0073aa; box-shadow: 0 2px 8px rgba(0,115,170,0.15); }
+.cb-block-option-icon { font-size: 26px; margin-bottom: 8px; }
+.cb-block-option-label { font-weight: 600; font-size: 13px; color: #1d2327; margin-bottom: 5px; }
+.cb-block-option-desc { font-size: 11px; color: #757575; line-height: 1.5; }
+.cb-repeater-items { margin-bottom: 4px; }
+.cb-repeater-item { background: #f9f9f9; border: 1px solid #dcdcde; border-radius: 4px; padding: 12px; margin-bottom: 8px; }
+.cb-repeater-item-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; padding-bottom: 8px; border-bottom: 1px solid #e5e5e5; }
+.cb-repeater-item-num { flex: 1; font-size: 11px; font-weight: 600; color: #a7aaad; text-transform: uppercase; letter-spacing: 0.5px; }
+.cb-btn-remove-item { background: transparent; border: none; color: #b32d2e; cursor: pointer; font-size: 11px; padding: 2px 4px; }
+.cb-sub-field { margin-bottom: 8px; }
+.cb-sub-field label { display: block; font-size: 12px; color: #50575e; margin-bottom: 3px; font-weight: 500; }
+.cb-repeater-empty { font-size: 12px; color: #a7aaad; text-align: center; padding: 12px; background: #f9f9f9; border: 1px dashed #dcdcde; border-radius: 4px; margin-bottom: 4px; }
+.cb-empty-state { text-align: center; padding: 40px 20px; background: #f9f9f9; border: 2px dashed #dcdcde; border-radius: 6px; color: #757575; margin-bottom: 10px; }
+.cb-empty-icon { font-size: 36px; margin-bottom: 10px; opacity: 0.5; }
+.cb-empty-state p { margin: 0 0 6px; }
+.cb-block-row-placeholder { background: #e5f0fa; border: 2px dashed #0073aa; border-radius: 6px; height: 58px; margin-bottom: 10px; }
+.cb-add-block-wrap { margin-top: 4px; }

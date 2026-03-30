@@ -1,0 +1,617 @@
+/**
+ * Course Landing Blocks — Admin Styles
+ * These styles only load on WordPress page edit screens — not on the public site.
+ */
+
+/* ── Editor wrapper ─────────────────────────────────────────────────────────── */
+
+#clb-editor {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, sans-serif;
+    font-size: 13px;
+    color: #2c3338;
+}
+
+.clb-intro {
+    background: #f0f6fc;
+    border-left: 4px solid #0073aa;
+    padding: 14px 18px;
+    margin-bottom: 20px;
+    border-radius: 0 4px 4px 0;
+    line-height: 1.6;
+    color: #2c3338;
+}
+
+/* ── Block rows ─────────────────────────────────────────────────────────────── */
+
+#clb-blocks-list {
+    min-height: 60px;
+}
+
+.clb-block-row {
+    background: #fff;
+    border: 1px solid #dcdcde;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    transition: box-shadow 0.15s ease;
+}
+
+.clb-block-row:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.clb-block-row.ui-sortable-helper {
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    opacity: 0.95;
+}
+
+/* ── Block header ───────────────────────────────────────────────────────────── */
+
+.clb-block-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    background: #f6f7f7;
+    border-bottom: 1px solid #dcdcde;
+    cursor: default;
+    user-select: none;
+}
+
+.clb-drag-handle {
+    cursor: grab;
+    color: #a7aaad;
+    font-size: 20px;
+    line-height: 1;
+    padding: 0 2px;
+    flex-shrink: 0;
+}
+
+.clb-drag-handle:active {
+    cursor: grabbing;
+}
+
+.clb-block-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.clb-block-title {
+    flex: 1;
+    font-weight: 600;
+    font-size: 14px;
+    color: #1d2327;
+}
+
+.clb-block-actions {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+/* ── Block fields area ──────────────────────────────────────────────────────── */
+
+.clb-block-fields {
+    padding: 18px;
+    background: #fff;
+    border-top: 1px solid #f0f0f0;
+}
+
+.clb-fields-desc {
+    font-size: 12px;
+    color: #757575;
+    margin: 0 0 16px;
+    font-style: italic;
+}
+
+/* ── Individual fields ──────────────────────────────────────────────────────── */
+
+.clb-field {
+    margin-bottom: 18px;
+}
+
+.clb-field:last-child {
+    margin-bottom: 0;
+}
+
+.clb-field-label {
+    display: block;
+    font-weight: 600;
+    font-size: 13px;
+    margin-bottom: 4px;
+    color: #1d2327;
+}
+
+.clb-field-desc {
+    font-size: 12px;
+    color: #757575;
+    margin: 0 0 6px;
+    line-height: 1.5;
+}
+
+.clb-input,
+.clb-textarea,
+.clb-select {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #8c8f94;
+    border-radius: 4px;
+    padding: 8px 10px;
+    font-size: 13px;
+    color: #2c3338;
+    background: #fff;
+    line-height: 1.4;
+    transition: border-color 0.15s;
+}
+
+.clb-input:focus,
+.clb-textarea:focus,
+.clb-select:focus {
+    border-color: #0073aa;
+    outline: none;
+    box-shadow: 0 0 0 1px #0073aa;
+}
+
+.clb-textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+/* ── Toggle switch ──────────────────────────────────────────────────────────── */
+
+.clb-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.clb-toggle input[type="checkbox"] {
+    position: relative;
+    width: 40px;
+    height: 22px;
+    appearance: none;
+    background: #c3c4c7;
+    border-radius: 11px;
+    cursor: pointer;
+    transition: background 0.2s;
+    flex-shrink: 0;
+}
+
+.clb-toggle input[type="checkbox"]:checked {
+    background: #0073aa;
+}
+
+.clb-toggle input[type="checkbox"]::after {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background: #fff;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    transition: left 0.2s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.clb-toggle input[type="checkbox"]:checked::after {
+    left: 20px;
+}
+
+.clb-toggle-label {
+    font-size: 13px;
+    color: #50575e;
+}
+
+/* ── Buttons ────────────────────────────────────────────────────────────────── */
+
+.clb-btn {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.4;
+    text-align: center;
+    transition: background 0.15s, opacity 0.15s;
+}
+
+.clb-btn-add {
+    background: #0073aa;
+    color: #fff;
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 14px;
+    margin-top: 6px;
+}
+
+.clb-btn-add:hover {
+    background: #005a87;
+    color: #fff;
+}
+
+.clb-btn-toggle-fields {
+    background: #f0f0f1;
+    border: 1px solid #c3c4c7;
+    color: #2c3338;
+    padding: 5px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.clb-btn-toggle-fields:hover {
+    background: #e0e0e0;
+}
+
+.clb-btn-remove {
+    background: #fff0f0;
+    border: 1px solid #f4b8b8;
+    color: #b32d2e;
+    padding: 5px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.clb-btn-remove:hover {
+    background: #fce8e8;
+}
+
+.clb-btn-cancel {
+    background: #f0f0f1;
+    border: 1px solid #c3c4c7;
+    color: #2c3338;
+    width: 100%;
+    padding: 10px 16px;
+    margin-top: 12px;
+    font-size: 13px;
+}
+
+.clb-btn-cancel:hover {
+    background: #e0e0e0;
+}
+
+.clb-btn-add-item {
+    display: block;
+    width: 100%;
+    background: transparent;
+    border: 1px dashed #0073aa;
+    color: #0073aa;
+    padding: 7px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    margin-top: 8px;
+    text-align: center;
+    transition: background 0.15s;
+}
+
+.clb-btn-add-item:hover {
+    background: #f0f6fc;
+}
+
+/* ── Block type picker ──────────────────────────────────────────────────────── */
+
+.clb-block-picker {
+    background: #f0f6fc;
+    border: 2px dashed #0073aa;
+    border-radius: 6px;
+    padding: 20px;
+    margin-top: 12px;
+}
+
+.clb-block-picker h3 {
+    margin: 0 0 4px;
+    font-size: 15px;
+    color: #1d2327;
+}
+
+.clb-picker-sub {
+    margin: 0 0 16px;
+    color: #757575;
+    font-size: 12px;
+}
+
+.clb-block-picker-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+    gap: 12px;
+    margin-bottom: 4px;
+}
+
+.clb-block-option {
+    background: #fff;
+    border: 2px solid #dcdcde;
+    border-radius: 6px;
+    padding: 16px 12px;
+    cursor: pointer;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    text-align: center;
+}
+
+.clb-block-option:hover {
+    border-color: #0073aa;
+    box-shadow: 0 2px 8px rgba(0, 115, 170, 0.15);
+}
+
+.clb-block-option-icon {
+    font-size: 26px;
+    margin-bottom: 8px;
+    line-height: 1;
+}
+
+.clb-block-option-label {
+    font-weight: 600;
+    font-size: 13px;
+    color: #1d2327;
+    margin-bottom: 5px;
+}
+
+.clb-block-option-desc {
+    font-size: 11px;
+    color: #757575;
+    line-height: 1.5;
+}
+
+/* ── Repeater ───────────────────────────────────────────────────────────────── */
+
+.clb-repeater-items {
+    margin-bottom: 4px;
+}
+
+.clb-repeater-item {
+    background: #f9f9f9;
+    border: 1px solid #dcdcde;
+    border-radius: 4px;
+    padding: 12px;
+    margin-bottom: 8px;
+}
+
+.clb-repeater-item-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.clb-repeater-item-num {
+    flex: 1;
+    font-size: 11px;
+    font-weight: 600;
+    color: #a7aaad;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.clb-btn-remove-item {
+    background: transparent;
+    border: none;
+    color: #b32d2e;
+    cursor: pointer;
+    font-size: 11px;
+    padding: 2px 4px;
+}
+
+.clb-sub-field {
+    margin-bottom: 8px;
+}
+
+.clb-sub-field:last-child {
+    margin-bottom: 0;
+}
+
+.clb-sub-field label {
+    display: block;
+    font-size: 12px;
+    color: #50575e;
+    margin-bottom: 3px;
+    font-weight: 500;
+}
+
+.clb-repeater-empty {
+    font-size: 12px;
+    color: #a7aaad;
+    text-align: center;
+    padding: 12px;
+    background: #f9f9f9;
+    border: 1px dashed #dcdcde;
+    border-radius: 4px;
+    margin-bottom: 4px;
+}
+
+/* ── Empty state ────────────────────────────────────────────────────────────── */
+
+.clb-empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    background: #f9f9f9;
+    border: 2px dashed #dcdcde;
+    border-radius: 6px;
+    color: #757575;
+    margin-bottom: 10px;
+}
+
+.clb-empty-icon {
+    font-size: 36px;
+    margin-bottom: 10px;
+    opacity: 0.5;
+}
+
+.clb-empty-state p {
+    margin: 0 0 6px;
+}
+
+/* ── Sortable placeholder ───────────────────────────────────────────────────── */
+
+.clb-block-row-placeholder {
+    background: #e5f0fa;
+    border: 2px dashed #0073aa;
+    border-radius: 6px;
+    height: 58px;
+    margin-bottom: 10px;
+    list-style: none;
+}
+
+/* ── Add block wrapper ──────────────────────────────────────────────────────── */
+
+.clb-add-block-wrap {
+    margin-top: 4px;
+}
+
+/* ── Product Connection Panel ───────────────────────────────────────────────── */
+
+.clb-product-connection {
+    background: #f0f6fc;
+    border: 1px solid #c3d9ee;
+    border-radius: 6px;
+    padding: 16px 18px;
+    margin-bottom: 20px;
+}
+
+.clb-product-connection-title {
+    font-weight: 700;
+    font-size: 13px;
+    color: #1d2327;
+    margin-bottom: 6px;
+}
+
+.clb-product-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 12px;
+}
+
+@media ( max-width: 782px ) {
+    .clb-product-fields {
+        grid-template-columns: 1fr;
+    }
+}
+
+.clb-product-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.clb-product-connected {
+    margin-top: 12px;
+    padding: 8px 12px;
+    background: #edfaed;
+    border: 1px solid #8cc98c;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #1d4a1d;
+}
+
+.clb-product-not-found {
+    margin-top: 12px;
+    padding: 8px 12px;
+    background: #fff8e5;
+    border: 1px solid #f0c040;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #6b4c00;
+}
+
+/* ── Course Outline Editor ──────────────────────────────────────────────────── */
+
+.clb-course-outline-wrap {
+    background: #f0f6fc;
+    border: 1px solid #c3d9ee;
+    border-radius: 6px;
+    padding: 16px 18px;
+    margin-bottom: 20px;
+}
+
+.clb-course-outline-wrap .wp-editor-wrap {
+    margin-top: 10px;
+}
+
+/* ── Course Versions trigger button positioning ─────────────────────────────── */
+/* The trigger button renders after the enrollment card guarantee line */
+.clb-versions-trigger {
+    margin-top: 10px;
+}
+
+/* ── Reviews carousel — constrain to 3 visible cards ───────────────────────── */
+
+.clb-reviews-carousel {
+    /* Override the full-width mask so it works inside a container */
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 5%,
+        black 95%,
+        transparent 100%
+    );
+    mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 5%,
+        black 95%,
+        transparent 100%
+    );
+}
+
+.clb-reviews-carousel .testi-track {
+    /* 3 cards × ~340px + gaps = ~1060px total visible width */
+    animation-duration: 35s; /* Slightly slower for constrained view */
+}
+
+.clb-reviews-carousel .testi-card {
+    width: 340px; /* Fixed card width — 3 fit neatly in a 1060px container */
+}
+
+@media ( max-width: 991px ) {
+    .clb-reviews-carousel .testi-card {
+        width: 280px; /* 2 visible on tablet */
+    }
+}
+
+@media ( max-width: 600px ) {
+    .clb-reviews-carousel .testi-card {
+        width: 260px; /* 1.5 visible on mobile — shows there's more to see */
+    }
+}
+
+/* ── Course Outline Button — eyebrow pill style in Hero ─────────────────────── */
+/* Matches the .hero-eyebrow pill exactly so it feels native to the hero area. */
+
+.clb-outline-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 16px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: rgba(255, 255, 255, 0.9);
+    font-family: "Urbanist", sans-serif;
+    font-weight: 700;
+    font-size: 0.76rem;
+    padding: 6px 14px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.clb-outline-btn:hover {
+    background: rgba(63, 208, 201, 0.15);
+    border-color: rgba(63, 208, 201, 0.5);
+    color: #3fd0c9;
+}
+
+.clb-outline-btn i {
+    font-size: 0.72rem;
+    opacity: 0.8;
+}

@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Site Header — Elementor Reference Template</title>
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800;900&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --teal:      #3FD0C9;
+      --teal-dark: #2ab5ae;
+      --teal-pale: #e8faf9;
+      --navy:      #10283A;
+      --gray:      #495057;
+      --gray-lt:   #6c757d;
+      --border:    #dde6ee;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { font-family: 'Lato', sans-serif; color: var(--navy); overflow-x: hidden; margin: 0; }
+    h1,h2,h3,h4,h5,h6 { font-family: 'Urbanist', sans-serif; }
+    a { text-decoration: none; }
+
+    /* ══════════════════════════════
+       SITE HEADER
+    ══════════════════════════════ */
+    .site-header {
+      background: var(--navy);
+      padding: 0;
+      position: sticky; top: 0; z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,.3);
+    }
+    .site-header .header-inner {
+      display: flex; align-items: stretch;
+      justify-content: space-between; gap: 8px;
+      min-height: 64px;
+    }
+    .site-header .container { padding-left: 10px; }
+    .site-header .header-logo {
+      display: flex; align-items: center;
+      padding: 10px 0; flex-shrink: 0; margin-right: 8px;
+    }
+    .site-header .header-logo img { height: 40px; }
+
+    /* Nav */
+    .site-nav {
+      display: flex; align-items: stretch;
+      gap: 0; flex: 1; justify-content: center;
+    }
+    .site-nav .nav-item {
+      display: flex; align-items: center;
+      position: relative;
+    }
+    .site-nav .nav-link {
+      color: #fff;
+      font-family: 'Urbanist', sans-serif; font-weight: 600; font-size: .82rem;
+      text-transform: uppercase; letter-spacing: .06em;
+      padding: 0 14px; height: 100%;
+      display: flex; align-items: center; gap: 5px;
+      white-space: nowrap; transition: color .15s, background .15s;
+      border-bottom: 3px solid transparent;
+    }
+    .site-nav .nav-link:hover,
+    .site-nav .nav-item:hover > .nav-link {
+      color: #fff; background: rgba(255,255,255,.06);
+      border-bottom-color: var(--teal);
+    }
+    .site-nav .nav-link .caret {
+      font-size: .65rem; opacity: .7; transition: transform .2s;
+    }
+    .site-nav .nav-item:hover > .nav-link .caret { transform: rotate(180deg); }
+
+    /* Standard dropdown */
+    .site-nav .nav-dropdown {
+      display: none;
+      position: absolute; top: 100%; left: 0;
+      background: #fff; min-width: 200px;
+      border-radius: 0 0 8px 8px;
+      box-shadow: 0 8px 24px rgba(16,40,58,.18);
+      border-top: 3px solid var(--teal);
+      z-index: 999; padding: 6px 0;
+    }
+    .site-nav .nav-item:hover .nav-dropdown { display: block; }
+    .site-nav .nav-dropdown a {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 18px;
+      color: var(--navy);
+      font-family: 'Urbanist', sans-serif; font-weight: 600; font-size: .82rem;
+      transition: background .15s, color .15s;
+    }
+    .site-nav .nav-dropdown a i {
+      color: var(--teal); width: 16px; text-align: center; font-size: .85rem;
+    }
+    .site-nav .nav-dropdown a:hover { background: var(--teal-pale); color: var(--navy); }
+    .nav-dropdown-divider { height: 1px; background: var(--border); margin: 4px 0; }
+
+    /* Courses mega-menu */
+    .nav-mega-dropdown {
+      width: 860px; padding: 0 !important;
+      border-radius: 0 8px 8px 8px; overflow: hidden;
+    }
+    .mega-inner { display: flex; min-height: 280px; }
+
+    /* LEFT — dark categories panel */
+    .mega-cats {
+      width: 360px; flex-shrink: 0;
+      background: var(--navy);
+      padding: 20px 20px 16px;
+      display: flex; flex-direction: column;
+    }
+    .mega-cats-label {
+      font-family: 'Urbanist', sans-serif; font-weight: 800;
+      font-size: .65rem; text-transform: uppercase; letter-spacing: .1em;
+      color: rgba(255,255,255,.4); margin-bottom: 10px;
+    }
+    .mega-cats-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2px 8px; flex: 1;
+    }
+    .mega-cat-item {
+      display: flex !important; align-items: center; gap: 9px;
+      padding: 8px 10px !important; border-radius: 7px;
+      color: rgba(255,255,255,.82) !important;
+      font-family: 'Urbanist', sans-serif; font-weight: 600; font-size: .81rem !important;
+      transition: background .15s, color .15s;
+    }
+    .mega-cat-item:hover { background: rgba(255,255,255,.1) !important; color: #fff !important; }
+    .mega-cat-item i { color: var(--teal) !important; width: 15px; font-size: .8rem; flex-shrink: 0; }
+    .mega-view-all {
+      display: block; margin-top: 16px;
+      padding: 9px 0 !important; text-align: center;
+      background: linear-gradient(90deg, #3fd0c9 0%, #70f07f 100%);
+      color: #051c2d !important; border-radius: 8px;
+      font-family: 'Urbanist', sans-serif; font-weight: 800 !important; font-size: .75rem !important;
+      text-transform: uppercase; letter-spacing: .06em; transition: background .2s;
+    }
+    .mega-view-all:hover { background: linear-gradient(90deg, #6ff081 0.1%, #42d2c4 99.9%) !important; }
+
+    /* RIGHT — featured courses panel */
+    .mega-featured {
+      flex: 1; background: #fff;
+      display: flex; flex-direction: column;
+    }
+    .mega-featured-top { padding: 18px 20px; flex: 1; }
+    .mega-featured-label {
+      font-family: 'Urbanist', sans-serif; font-weight: 800;
+      font-size: .65rem; text-transform: uppercase; letter-spacing: .1em;
+      color: var(--gray-lt); margin-bottom: 12px;
+      padding-bottom: 8px; border-bottom: 1px solid var(--border);
+    }
+    .mega-course-card {
+      display: flex; gap: 13px; align-items: flex-start;
+      padding: 10px 0; border-bottom: 1px solid var(--border);
+    }
+    .mega-course-card:last-child { border-bottom: none; padding-bottom: 2px; }
+    .mega-course-thumb {
+      width: 72px; height: 54px; border-radius: 7px; flex-shrink: 0;
+      background: linear-gradient(135deg, #3fd0c9 0%, #70f07f 100%);
+      display: flex; align-items: center; justify-content: center;
+      color: #051c2d; font-size: 1.35rem;
+    }
+    .mega-course-name {
+      font-family: 'Urbanist', sans-serif; font-weight: 700; font-size: .84rem;
+      color: var(--navy); margin-bottom: 3px; line-height: 1.3;
+    }
+    .mega-course-desc {
+      font-size: .73rem; color: var(--gray-lt); line-height: 1.4; margin-bottom: 7px;
+    }
+    .mega-course-btn {
+      display: inline-block; padding: 3px 11px;
+      border: 1.5px solid var(--teal); border-radius: 5px;
+      font-family: 'Urbanist', sans-serif; font-weight: 700; font-size: .7rem;
+      color: var(--teal-dark) !important; transition: background .15s;
+    }
+    .mega-course-btn:hover { background: var(--teal-pale) !important; }
+
+    /* BOTTOM BAR */
+    .mega-osha-bar {
+      background: var(--teal-pale);
+      padding: 13px 20px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      border-top: 1px solid rgba(63,208,201,.25);
+    }
+    .mega-osha-bar-text {
+      font-family: 'Urbanist', sans-serif; font-weight: 800; font-size: .88rem;
+      color: var(--navy);
+    }
+    .mega-osha-bar-sub { font-size: .73rem; color: var(--gray); margin-top: 1px; }
+    .mega-osha-btn {
+      background: linear-gradient(90deg, #3fd0c9 0%, #70f07f 100%);
+      color: #051c2d !important; padding: 7px 18px; border-radius: 7px;
+      font-family: 'Urbanist', sans-serif; font-weight: 800 !important; font-size: .75rem !important;
+      text-transform: uppercase; letter-spacing: .06em; flex-shrink: 0; transition: background .2s;
+    }
+    .mega-osha-btn:hover { background: linear-gradient(90deg, #6ff081 0.1%, #42d2c4 99.9%) !important; }
+
+    /* Header CTA */
+    .btn-header {
+      background: linear-gradient(90deg, #3fd0c9 0%, #70f07f 100%);
+      color: #051c2d;
+      font-family: 'Urbanist', sans-serif; font-weight: 800;
+      padding: 10px 22px; border-radius: 10px; border: none;
+      font-size: .82rem; white-space: nowrap; transition: background .2s;
+      text-transform: uppercase; letter-spacing: .07em;
+    }
+    .btn-header:hover { background: linear-gradient(90deg, #6ff081 0.1%, #42d2c4 99.9%); color: #051c2d; }
+    .header-cta { display: flex; align-items: center; gap: 4px; padding: 12px 0; flex-shrink: 0; }
+    .header-icon-btn {
+      background: none; border: none; cursor: pointer;
+      color: rgba(255,255,255,.8); font-size: 1rem;
+      padding: 7px 10px; border-radius: 8px;
+      transition: color .15s, background .15s;
+      display: flex; align-items: center;
+      text-decoration: none;
+    }
+    .header-icon-btn:hover { color: #fff; background: rgba(255,255,255,.1); }
+
+    /* Mobile toggle */
+    .mobile-menu-btn {
+      display: none; background: none; border: none;
+      color: #fff; font-size: 1.3rem; padding: 4px 8px; cursor: pointer;
+    }
+
+    @media (max-width: 991px) {
+      .site-nav { display: none; }
+      .mobile-menu-btn { display: block; }
+      .site-header .header-inner { flex-wrap: wrap; padding: 0; }
+      .site-header .header-logo { padding: 12px 0; }
+      .header-cta { padding: 12px 0; }
+      .mobile-nav-open .site-nav {
+        display: flex; flex-direction: column;
+        width: 100%; background: #0d2030;
+        border-top: 1px solid rgba(255,255,255,.1);
+        padding-bottom: 8px;
+      }
+      .mobile-nav-open .site-nav .nav-item { flex-direction: column; align-items: stretch; }
+      .mobile-nav-open .site-nav .nav-link { padding: 12px 16px; border-bottom: none; border-left: 3px solid transparent; }
+      .mobile-nav-open .site-nav .nav-link:hover { border-left-color: var(--teal); }
+      .mobile-nav-open .site-nav .nav-dropdown {
+        display: block; position: static;
+        box-shadow: none; border-radius: 0; border-top: none;
+        background: rgba(0,0,0,.2); padding: 0;
+      }
+      .mobile-nav-open .site-nav .nav-dropdown a { color: rgba(255,255,255,.8); padding: 10px 32px; }
+      .mobile-nav-open .site-nav .nav-dropdown a:hover { background: rgba(255,255,255,.08); color: #fff; }
+    }
+
+    /* ══════════════════════════════
+       TRUST BAR
+    ══════════════════════════════ */
+    .trust-bar { background: linear-gradient(90deg, #3fd0c9 0%, #70f07f 100%); padding: 8px 0; }
+    .trust-item {
+      display: flex; align-items: center; gap: 6px;
+      color: var(--navy);
+      font-family: 'Urbanist', sans-serif; font-weight: 700; font-size: .8rem;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+
+<!--
+=================================================
+  ELEMENTOR BUILD GUIDE — SITE HEADER
+=================================================
+STRUCTURE:
+  • Header Template (Elementor Theme Builder > Header)
+  • Nav Menu widget OR custom HTML widget for the full header
+  • Sticky header: enable via Elementor section Advanced > Motion Effects > Sticky Top
+
+ELEMENTOR MAPPING:
+  Site Header:
+    • Section: full-width, navy bg (#10283A), sticky, padding 0
+    • Use a Nav Menu widget for basic nav, OR paste the full HTML into an HTML widget
+      for pixel-perfect replication of the mega-menu design
+
+  Mega-menu (Courses dropdown):
+    • Best handled as a custom HTML widget — Elementor's Nav Menu widget
+      does not support nested mega-menu layouts natively
+    • OR use a plugin like "Max Mega Menu" alongside Elementor
+
+  Trust Bar:
+    • Section below the header: teal-to-green gradient bg
+    • Icon List widget (4 items) centered, or HTML widget
+
+DYNAMIC DATA NOTES:
+  • Logo img src:  Site Logo widget OR custom field from theme options
+  • Cart icon:     WooCommerce Cart widget or [woocommerce_cart_link]
+  • Login button:  WooCommerce My Account widget or shortcode
+  • Course links:  Manual or connected to CPT via dynamic tags
+
+IMPLEMENTATION NOTE:
+  Copy the <header> and <div class="trust-bar"> blocks into your header template.
+  Add the <script> block at the bottom of the template (or enqueue via functions.php).
+=================================================
+-->
+
+
+<!-- ═══════════════════════════════════════════
+     SITE HEADER
+     ─────────────────────────────────────────
+     Elementor: Header Template > HTML widget
+     OR Nav Menu widget (simplified version)
+     Sticky: Section > Advanced > Motion > Sticky Top
+════════════════════════════════════════════ -->
+<header class="site-header" id="site-header">
+  <div class="container">
+    <div class="header-inner">
+
+      <!-- Logo
+           Elementor: Site Logo widget
+           OR Image widget linked to home URL -->
+      <a href="/" class="header-logo">
+        <img src="/wp-content/themes/etraintoday/V1/images/e%20training%20new%20logo%202.png"
+             alt="eTraining — Better Training. Better Outcomes.">
+      </a>
+
+      <!-- Mobile toggle
+           Elementor: HTML widget — keep inline with header HTML -->
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation">
+        <i class="fas fa-bars" id="mobileMenuIcon"></i>
+      </button>
+
+      <!-- Nav links
+           Elementor: Nav Menu widget for simple nav
+           For mega-menu: HTML widget (paste full nav block) -->
+      <nav class="site-nav" id="siteNav">
+
+        <!-- Courses — Mega-menu dropdown -->
+        <div class="nav-item">
+          <a href="/course-catalog/" class="nav-link" onclick="return false;">
+            Courses <i class="fas fa-chevron-down caret"></i>
+          </a>
+          <div class="nav-dropdown nav-mega-dropdown">
+            <div class="mega-inner">
+
+              <!-- LEFT: dark categories panel -->
+              <div class="mega-cats">
+                <div class="mega-cats-label">Categories</div>
+                <div class="mega-cats-grid">
+                  <a href="/course-catalog/hazwoper/" class="mega-cat-item"><i class="fas fa-biohazard"></i> HAZWOPER</a>
+                  <a href="/course-catalog/general-safety/" class="mega-cat-item"><i class="fas fa-shield-alt"></i> General Safety</a>
+                  <a href="/course-catalog/construction/" class="mega-cat-item"><i class="fas fa-hard-hat"></i> Construction</a>
+                  <a href="/course-catalog/healthcare/" class="mega-cat-item"><i class="fas fa-heartbeat"></i> Healthcare</a>
+                  <a href="/course-catalog/osha-training/" class="mega-cat-item"><i class="fas fa-certificate"></i> OSHA Training</a>
+                  <a href="/course-catalog/transportation/" class="mega-cat-item"><i class="fas fa-truck"></i> Transportation &amp; Warehouse</a>
+                  <a href="/course-catalog/competent-person/" class="mega-cat-item"><i class="fas fa-user-check"></i> Competent Person Training</a>
+                  <a href="/course-catalog/spanish-courses/" class="mega-cat-item"><i class="fas fa-language"></i> Spanish Courses</a>
+                  <a href="/course-catalog/crane-safety/" class="mega-cat-item"><i class="fas fa-cog"></i> Crane Safety</a>
+                </div>
+                <a href="/course-catalog/" class="mega-view-all">View All Courses</a>
+              </div>
+
+              <!-- RIGHT: featured courses panel -->
+              <div class="mega-featured">
+                <div class="mega-featured-top">
+                  <div class="mega-featured-label">Featured Courses</div>
+
+                  <div class="mega-course-card">
+                    <div class="mega-course-thumb"><i class="fas fa-sync-alt"></i></div>
+                    <div>
+                      <div class="mega-course-name">9-Hour HAZWOPER Annual Refresher</div>
+                      <div class="mega-course-desc">Updated annually to reflect OSHA regulatory changes. Instant certificate upon completion.</div>
+                      <a href="/course-catalog/hazwoper/hazwoper-9-hour-refresher/" class="mega-course-btn">View Detail</a>
+                    </div>
+                  </div>
+
+                  <div class="mega-course-card">
+                    <div class="mega-course-thumb" style="background:linear-gradient(135deg,#067b5a,#051c2d);color:#3fd0c9;"><i class="fas fa-battery-full"></i></div>
+                    <div>
+                      <div class="mega-course-name">Lithium Battery Safety</div>
+                      <div class="mega-course-desc">Essential training for teams handling, shipping, or storing lithium batteries.</div>
+                      <a href="/course-catalog/general-safety/lithium-battery-safety/" class="mega-course-btn">View Detail</a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Bottom teal bar -->
+                <div class="mega-osha-bar">
+                  <div>
+                    <div class="mega-osha-bar-text">View All OSHA Courses</div>
+                    <div class="mega-osha-bar-sub">Browse the full HAZWOPER &amp; OSHA compliance catalog</div>
+                  </div>
+                  <a href="/course-catalog/hazwoper/" class="mega-osha-btn">View</a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Business Accounts -->
+        <div class="nav-item">
+          <a href="/business-accounts/" class="nav-link">Business Accounts</a>
+        </div>
+
+        <!-- Group Enrollment -->
+        <div class="nav-item">
+          <a href="/group-enrollment/" class="nav-link">Group Enrollment</a>
+        </div>
+
+        <!-- Knowledge Hub dropdown -->
+        <div class="nav-item">
+          <a href="#" class="nav-link" onclick="return false;">
+            Knowledge Hub <i class="fas fa-chevron-down caret"></i>
+          </a>
+          <div class="nav-dropdown">
+            <a href="/blog/"><i class="fas fa-newspaper"></i> Blog</a>
+            <a href="/tools/"><i class="fas fa-toolbox"></i> Tools</a>
+          </div>
+        </div>
+
+        <!-- Contact Us dropdown -->
+        <div class="nav-item">
+          <a href="#" class="nav-link" onclick="return false;">
+            Contact Us <i class="fas fa-chevron-down caret"></i>
+          </a>
+          <div class="nav-dropdown">
+            <a href="/about/"><i class="fas fa-building"></i> About Us</a>
+            <div class="nav-dropdown-divider"></div>
+            <a href="/contact/"><i class="fas fa-envelope"></i> Send a Message</a>
+            <a href="tel:+1XXXXXXXXXX"><i class="fas fa-phone-alt"></i> Call Us</a>
+          </div>
+        </div>
+
+      </nav>
+
+      <!-- CTA buttons
+           Elementor: HTML widget for icon buttons
+           Login: WooCommerce My Account widget or Button widget
+           Cart:  WooCommerce Cart widget -->
+      <div class="header-cta">
+        <a href="/search/" class="header-icon-btn" aria-label="Search"><i class="fas fa-search"></i></a>
+        <a href="/cart/" class="header-icon-btn" aria-label="Cart"><i class="fas fa-shopping-cart"></i></a>
+        <a href="/my-account/" class="btn-header" style="margin-left:6px;">
+          <i class="fas fa-user" style="margin-right:6px;font-size:.8rem;"></i>Login
+        </a>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+
+<!-- ═══════════════════════════════════════════
+     TRUST BAR
+     ─────────────────────────────────────────
+     Elementor: Section below header
+       • Background: gradient #3fd0c9 → #70f07f (90deg)
+       • Padding: 8px 0
+       • Icon List widget (4 items) OR HTML widget
+       • Align: center
+════════════════════════════════════════════ -->
+<div class="trust-bar">
+  <div class="container">
+    <div class="d-flex align-items-center justify-content-center flex-wrap gap-4">
+      <div class="trust-item"><i class="fas fa-check-circle"></i> OSHA 29 CFR 1910.120 Compliant</div>
+      <div class="trust-item"><i class="fas fa-shield-alt"></i> Accepted Nationwide</div>
+      <div class="trust-item"><i class="fas fa-users"></i> 10,000+ Workers Certified</div>
+      <div class="trust-item"><i class="fas fa-bolt"></i> Instant Certificate</div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  // Mobile menu toggle
+  // Elementor: Add this JS to Elementor > Custom Code, or enqueue via functions.php
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const mobileMenuIcon = document.getElementById('mobileMenuIcon');
+  const siteHeader = document.getElementById('site-header');
+
+  mobileMenuBtn.addEventListener('click', function () {
+    siteHeader.classList.toggle('mobile-nav-open');
+    const isOpen = siteHeader.classList.contains('mobile-nav-open');
+    mobileMenuIcon.className = isOpen ? 'fas fa-times' : 'fas fa-bars';
+  });
+</script>
+
+</body>
+</html>

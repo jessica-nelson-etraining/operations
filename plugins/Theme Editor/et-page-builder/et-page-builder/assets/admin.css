@@ -1,0 +1,975 @@
+/**
+ * eTraining Page Builder — Admin Styles
+ * Merged from course-landing-blocks-v2 and core-blocks admin CSS.
+ * All clb- and cb- class prefixes replaced with etpb-.
+ * These styles only load on WordPress page edit screens — not on the public site.
+ */
+
+/* ── Editor wrapper ─────────────────────────────────────────────────────────── */
+
+#etpb-editor {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, sans-serif;
+    font-size: 13px;
+    color: #2c3338;
+}
+
+.etpb-intro {
+    background: #f0f6fc;
+    border-left: 4px solid #0073aa;
+    padding: 14px 18px;
+    margin-bottom: 20px;
+    border-radius: 0 4px 4px 0;
+    line-height: 1.6;
+    color: #2c3338;
+}
+
+/* ── Block rows ─────────────────────────────────────────────────────────────── */
+
+#etpb-blocks-list {
+    min-height: 60px;
+}
+
+.etpb-block-row {
+    background: #fff;
+    border: 1px solid #dcdcde;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    transition: box-shadow 0.15s ease;
+}
+
+.etpb-block-row:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.etpb-block-row.ui-sortable-helper {
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    opacity: 0.95;
+}
+
+/* ── Block header ───────────────────────────────────────────────────────────── */
+
+.etpb-block-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    background: #f6f7f7;
+    border-bottom: 1px solid #dcdcde;
+    cursor: default;
+    user-select: none;
+}
+
+.etpb-drag-handle {
+    cursor: grab;
+    color: #a7aaad;
+    font-size: 20px;
+    line-height: 1;
+    padding: 0 2px;
+    flex-shrink: 0;
+}
+
+.etpb-drag-handle:active {
+    cursor: grabbing;
+}
+
+.etpb-block-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.etpb-block-title {
+    flex: 1;
+    font-weight: 600;
+    font-size: 14px;
+    color: #1d2327;
+}
+
+.etpb-block-actions {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+/* ── Block fields area ──────────────────────────────────────────────────────── */
+
+.etpb-block-fields {
+    padding: 18px;
+    background: #fff;
+    border-top: 1px solid #f0f0f0;
+}
+
+.etpb-fields-desc {
+    font-size: 12px;
+    color: #757575;
+    margin: 0 0 16px;
+    font-style: italic;
+}
+
+/* ── Individual fields ──────────────────────────────────────────────────────── */
+
+.etpb-field {
+    margin-bottom: 18px;
+}
+
+.etpb-field:last-child {
+    margin-bottom: 0;
+}
+
+.etpb-field-label {
+    display: block;
+    font-weight: 600;
+    font-size: 13px;
+    margin-bottom: 4px;
+    color: #1d2327;
+}
+
+.etpb-field-desc {
+    font-size: 12px;
+    color: #757575;
+    margin: 0 0 6px;
+    line-height: 1.5;
+}
+
+.etpb-input,
+.etpb-textarea,
+.etpb-select {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #8c8f94;
+    border-radius: 4px;
+    padding: 8px 10px;
+    font-size: 13px;
+    color: #2c3338;
+    background: #fff;
+    line-height: 1.4;
+    transition: border-color 0.15s;
+}
+
+.etpb-input:focus,
+.etpb-textarea:focus,
+.etpb-select:focus {
+    border-color: #0073aa;
+    outline: none;
+    box-shadow: 0 0 0 1px #0073aa;
+}
+
+.etpb-textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+/* ── Toggle switch ──────────────────────────────────────────────────────────── */
+
+.etpb-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.etpb-toggle input[type="checkbox"] {
+    position: relative;
+    width: 40px;
+    height: 22px;
+    appearance: none;
+    background: #c3c4c7;
+    border-radius: 11px;
+    cursor: pointer;
+    transition: background 0.2s;
+    flex-shrink: 0;
+}
+
+.etpb-toggle input[type="checkbox"]:checked {
+    background: #0073aa;
+}
+
+.etpb-toggle input[type="checkbox"]::after {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background: #fff;
+    border-radius: 50%;
+    top: 2px;
+    left: 2px;
+    transition: left 0.2s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+.etpb-toggle input[type="checkbox"]:checked::after {
+    left: 20px;
+}
+
+.etpb-toggle-label {
+    font-size: 13px;
+    color: #50575e;
+}
+
+/* ── Buttons ────────────────────────────────────────────────────────────────── */
+
+.etpb-btn {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.4;
+    text-align: center;
+    transition: background 0.15s, opacity 0.15s;
+}
+
+.etpb-btn-add {
+    background: #0073aa;
+    color: #fff;
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 14px;
+    margin-top: 6px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+}
+
+.etpb-btn-add:hover {
+    background: #005a87;
+    color: #fff;
+}
+
+.etpb-btn-toggle-fields {
+    background: #f0f0f1;
+    border: 1px solid #c3c4c7;
+    color: #2c3338;
+    padding: 5px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.etpb-btn-toggle-fields:hover {
+    background: #e0e0e0;
+}
+
+.etpb-btn-remove {
+    background: #fff0f0;
+    border: 1px solid #f4b8b8;
+    color: #b32d2e;
+    padding: 5px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.etpb-btn-remove:hover {
+    background: #fce8e8;
+}
+
+.etpb-btn-cancel {
+    background: #f0f0f1;
+    border: 1px solid #c3c4c7;
+    color: #2c3338;
+    width: 100%;
+    padding: 10px 16px;
+    margin-top: 12px;
+    font-size: 13px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.etpb-btn-cancel:hover {
+    background: #e0e0e0;
+}
+
+.etpb-btn-add-item {
+    display: block;
+    width: 100%;
+    background: transparent;
+    border: 1px dashed #0073aa;
+    color: #0073aa;
+    padding: 7px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    margin-top: 8px;
+    text-align: center;
+    transition: background 0.15s;
+}
+
+.etpb-btn-add-item:hover {
+    background: #f0f6fc;
+}
+
+/* ── Block type picker ──────────────────────────────────────────────────────── */
+
+.etpb-block-picker {
+    background: #f0f6fc;
+    border: 2px dashed #0073aa;
+    border-radius: 6px;
+    padding: 20px;
+    margin-top: 12px;
+}
+
+.etpb-block-picker h3 {
+    margin: 0 0 4px;
+    font-size: 15px;
+    color: #1d2327;
+}
+
+.etpb-picker-sub {
+    margin: 0 0 16px;
+    color: #757575;
+    font-size: 12px;
+}
+
+.etpb-block-picker-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+    gap: 12px;
+    margin-bottom: 4px;
+}
+
+.etpb-block-option {
+    background: #fff;
+    border: 2px solid #dcdcde;
+    border-radius: 6px;
+    padding: 16px 12px;
+    cursor: pointer;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    text-align: center;
+}
+
+.etpb-block-option:hover {
+    border-color: #0073aa;
+    box-shadow: 0 2px 8px rgba(0, 115, 170, 0.15);
+}
+
+.etpb-block-option-icon {
+    font-size: 26px;
+    margin-bottom: 8px;
+    line-height: 1;
+}
+
+.etpb-block-option-label {
+    font-weight: 600;
+    font-size: 13px;
+    color: #1d2327;
+    margin-bottom: 5px;
+}
+
+.etpb-block-option-desc {
+    font-size: 11px;
+    color: #757575;
+    line-height: 1.5;
+}
+
+/* ── Category tabs ──────────────────────────────────────────────────────────── */
+
+.etpb-category-tabs {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+.etpb-cat-tab {
+    padding: 6px 16px;
+    border: 1px solid #c3c4c7;
+    background: #f6f7f7;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #50575e;
+    transition: all 0.15s;
+}
+
+.etpb-cat-tab:hover {
+    background: #e8f0fe;
+    border-color: #3fd0c9;
+    color: #0b1b2c;
+}
+
+.etpb-cat-tab.active {
+    background: linear-gradient(90deg, #3fd0c9 0%, #70f07f 100%);
+    border-color: transparent;
+    color: #0b1b2c;
+    font-weight: 700;
+}
+
+/* ── Repeater ───────────────────────────────────────────────────────────────── */
+
+.etpb-repeater-items {
+    margin-bottom: 4px;
+}
+
+.etpb-repeater-item {
+    background: #f9f9f9;
+    border: 1px solid #dcdcde;
+    border-radius: 4px;
+    padding: 12px;
+    margin-bottom: 8px;
+}
+
+.etpb-repeater-item-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.etpb-repeater-item-num {
+    flex: 1;
+    font-size: 11px;
+    font-weight: 600;
+    color: #a7aaad;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.etpb-btn-remove-item {
+    background: transparent;
+    border: none;
+    color: #b32d2e;
+    cursor: pointer;
+    font-size: 11px;
+    padding: 2px 4px;
+}
+
+.etpb-sub-field {
+    margin-bottom: 8px;
+}
+
+.etpb-sub-field:last-child {
+    margin-bottom: 0;
+}
+
+.etpb-sub-field label {
+    display: block;
+    font-size: 12px;
+    color: #50575e;
+    margin-bottom: 3px;
+    font-weight: 500;
+}
+
+.etpb-repeater-empty {
+    font-size: 12px;
+    color: #a7aaad;
+    text-align: center;
+    padding: 12px;
+    background: #f9f9f9;
+    border: 1px dashed #dcdcde;
+    border-radius: 4px;
+    margin-bottom: 4px;
+}
+
+/* ── Empty state ────────────────────────────────────────────────────────────── */
+
+.etpb-empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    background: #f9f9f9;
+    border: 2px dashed #dcdcde;
+    border-radius: 6px;
+    color: #757575;
+    margin-bottom: 10px;
+}
+
+.etpb-empty-icon {
+    font-size: 36px;
+    margin-bottom: 10px;
+    opacity: 0.5;
+}
+
+.etpb-empty-state p {
+    margin: 0 0 6px;
+}
+
+/* ── Sortable placeholder ───────────────────────────────────────────────────── */
+
+.etpb-block-row-placeholder {
+    background: #e5f0fa;
+    border: 2px dashed #0073aa;
+    border-radius: 6px;
+    height: 58px;
+    margin-bottom: 10px;
+    list-style: none;
+}
+
+/* ── Add block wrapper ──────────────────────────────────────────────────────── */
+
+.etpb-add-block-wrap {
+    margin-top: 4px;
+}
+
+/* ── Product Connection Panel ───────────────────────────────────────────────── */
+
+.etpb-product-connection {
+    background: #f0f6fc;
+    border: 1px solid #c3d9ee;
+    border-radius: 6px;
+    padding: 16px 18px;
+    margin-bottom: 20px;
+}
+
+.etpb-product-connection-title {
+    font-weight: 700;
+    font-size: 13px;
+    color: #1d2327;
+    margin-bottom: 6px;
+}
+
+.etpb-product-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 12px;
+}
+
+@media ( max-width: 782px ) {
+    .etpb-product-fields {
+        grid-template-columns: 1fr;
+    }
+}
+
+.etpb-product-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.etpb-product-connected {
+    margin-top: 12px;
+    padding: 8px 12px;
+    background: #edfaed;
+    border: 1px solid #8cc98c;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #1d4a1d;
+}
+
+.etpb-product-not-found {
+    margin-top: 12px;
+    padding: 8px 12px;
+    background: #fff8e5;
+    border: 1px solid #f0c040;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #6b4c00;
+}
+
+/* ── Course Outline Editor ──────────────────────────────────────────────────── */
+
+.etpb-course-outline-wrap {
+    background: #f0f6fc;
+    border: 1px solid #c3d9ee;
+    border-radius: 6px;
+    padding: 16px 18px;
+    margin-bottom: 20px;
+}
+
+.etpb-course-outline-wrap .wp-editor-wrap {
+    margin-top: 10px;
+}
+
+/* ── Course Versions trigger button positioning ─────────────────────────────── */
+
+.etpb-versions-trigger {
+    margin-top: 10px;
+}
+
+/* ── Reviews carousel — constrain to 3 visible cards ───────────────────────── */
+
+.etpb-reviews-carousel {
+    -webkit-mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 5%,
+        black 95%,
+        transparent 100%
+    );
+    mask-image: linear-gradient(
+        to right,
+        transparent 0%,
+        black 5%,
+        black 95%,
+        transparent 100%
+    );
+}
+
+.etpb-reviews-carousel .testi-track {
+    animation-duration: 35s;
+}
+
+.etpb-reviews-carousel .testi-card {
+    width: 340px;
+}
+
+@media ( max-width: 991px ) {
+    .etpb-reviews-carousel .testi-card {
+        width: 280px;
+    }
+}
+
+@media ( max-width: 600px ) {
+    .etpb-reviews-carousel .testi-card {
+        width: 260px;
+    }
+}
+
+/* ── Course Outline Button — eyebrow pill style in Hero ─────────────────────── */
+
+.etpb-outline-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 16px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: rgba(255, 255, 255, 0.9);
+    font-family: "Urbanist", sans-serif;
+    font-weight: 700;
+    font-size: 0.76rem;
+    padding: 6px 14px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.etpb-outline-btn:hover {
+    background: rgba(63, 208, 201, 0.15);
+    border-color: rgba(63, 208, 201, 0.5);
+    color: #3fd0c9;
+}
+
+.etpb-outline-btn i {
+    font-size: 0.72rem;
+    opacity: 0.8;
+}
+
+/* ── Layout Section column builder ──────────────────────────────────────────── */
+.etpb-layout-columns-wrap {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+}
+
+.etpb-layout-column {
+    flex: 1;
+    min-width: 200px;
+    border: 2px dashed #c3c4c7;
+    border-radius: 8px;
+    padding: 12px;
+    background: #fafbfc;
+}
+
+.etpb-layout-col-header {
+    margin-bottom: 8px;
+}
+
+.etpb-col-label {
+    font-family: -apple-system, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #50575e;
+}
+
+.etpb-nested-blocks-list {
+    min-height: 40px;
+    margin-bottom: 8px;
+}
+
+.etpb-nested-block-row {
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    border-radius: 6px;
+    margin-bottom: 6px;
+    overflow: hidden;
+}
+
+.etpb-nested-block-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    background: #f0f0f1;
+    cursor: default;
+}
+
+.etpb-nested-drag-handle {
+    cursor: grab;
+    color: #a7aaad;
+    font-size: 14px;
+}
+
+.etpb-nested-icon { font-size: 14px; }
+
+.etpb-nested-label {
+    flex: 1;
+    font-size: 12px;
+    font-weight: 600;
+    color: #1d2327;
+}
+
+.etpb-nested-actions {
+    display: flex;
+    gap: 4px;
+}
+
+.etpb-nested-btn-toggle,
+.etpb-nested-btn-remove {
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    border: 1px solid #c3c4c7;
+    background: #fff;
+    cursor: pointer;
+    color: #1d2327;
+}
+
+.etpb-nested-btn-remove { color: #b32d2e; border-color: #b32d2e; }
+
+.etpb-nested-block-fields {
+    padding: 10px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.etpb-add-nested-block-btn {
+    width: 100%;
+    padding: 6px;
+    border: 1px dashed #3fd0c9;
+    background: transparent;
+    color: #2ab5ae;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.15s;
+}
+
+.etpb-add-nested-block-btn:hover {
+    background: rgba(63,208,201,0.08);
+}
+
+/* ── Nested block picker ──────────────────────────────────────────────────────── */
+.etpb-nested-picker {
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    border-radius: 8px;
+    padding: 14px;
+    margin-bottom: 8px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+}
+
+.etpb-nested-picker h4 {
+    margin: 0 0 10px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #1d2327;
+}
+
+.etpb-nested-tabs {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.etpb-nested-cat-tab {
+    padding: 3px 10px;
+    border: 1px solid #c3c4c7;
+    background: #f6f7f7;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    color: #50575e;
+}
+
+.etpb-nested-cat-tab.active {
+    background: linear-gradient(90deg, #3fd0c9 0%, #70f07f 100%);
+    border-color: transparent;
+    color: #0b1b2c;
+}
+
+.etpb-nested-picker-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 6px;
+    margin-bottom: 10px;
+    max-height: 280px;
+    overflow-y: auto;
+}
+
+.etpb-nested-block-option {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    background: #fafafa;
+    transition: all 0.12s;
+}
+
+.etpb-nested-block-option:hover {
+    border-color: #3fd0c9;
+    background: rgba(63,208,201,0.06);
+}
+
+.etpb-nested-option-icon { font-size: 14px; }
+.etpb-nested-option-label { font-weight: 600; color: #1d2327; }
+
+.etpb-nested-picker-cancel {
+    font-size: 11px;
+    padding: 4px 10px;
+    border: 1px solid #c3c4c7;
+    background: #f6f7f7;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #50575e;
+}
+
+.etpb-col-builder-note {
+    font-size: 12px;
+    color: #757575;
+    margin-bottom: 10px;
+}
+
+/* ── Background Settings Group ─────────────────────────────────────────────── */
+
+.etpb-bg-group {
+    margin-top: 18px;
+    border: 1px solid #d0d5dd;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.etpb-bg-group-toggle {
+    width: 100%;
+    text-align: left;
+    padding: 10px 14px;
+    background: linear-gradient(90deg, #f0f6fc 0%, #f8f9fa 100%);
+    border: none;
+    border-bottom: 1px solid #d0d5dd;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 700;
+    color: #1d2327;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.15s;
+}
+
+.etpb-bg-group-toggle:hover { background: #e8f0fe; }
+
+.etpb-bg-toggle-arrow {
+    font-size: 10px;
+    color: #757575;
+}
+
+.etpb-bg-group-inner {
+    padding: 14px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.etpb-bg-field-wrap {
+    /* Individual wrapper for show/hide based on bg_type */
+}
+
+/* ── Color Picker ──────────────────────────────────────────────────────────── */
+
+.etpb-color-picker-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.etpb-color-swatch {
+    width: 38px;
+    height: 38px;
+    padding: 2px;
+    border: 1px solid #c3c4c7;
+    border-radius: 6px;
+    cursor: pointer;
+    background: none;
+    flex-shrink: 0;
+}
+
+.etpb-color-hex {
+    flex: 1;
+    font-family: 'Courier New', monospace;
+    font-size: 13px !important;
+    text-transform: uppercase;
+}
+
+/* ── Media Picker ──────────────────────────────────────────────────────────── */
+
+.etpb-media-picker-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.etpb-media-picker-wrap input {
+    flex: 1;
+}
+
+.etpb-media-pick-btn {
+    padding: 7px 12px;
+    border: 1px solid #c3c4c7;
+    background: #f6f7f7;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    color: #1d2327;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: background 0.15s;
+}
+
+.etpb-media-pick-btn:hover { background: #e8f0fe; }
+
+.etpb-media-preview {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.etpb-media-thumb {
+    width: 80px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid #c3c4c7;
+}
+
+.etpb-media-clear-btn {
+    font-size: 11px;
+    padding: 3px 8px;
+    border: 1px solid #b32d2e;
+    background: #fff;
+    color: #b32d2e;
+    border-radius: 4px;
+    cursor: pointer;
+}

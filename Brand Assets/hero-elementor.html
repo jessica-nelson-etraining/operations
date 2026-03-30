@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hero Section — Elementor Reference Template</title>
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700;800;900&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --teal:      #3FD0C9;
+      --teal-dark: #2ab5ae;
+      --teal-pale: #e8faf9;
+      --navy:      #10283A;
+      --gray:      #495057;
+      --gray-lt:   #6c757d;
+      --off-white: #f8fafc;
+      --border:    #dde6ee;
+      --green-lt:  #A9ECA5;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { font-family: 'Lato', sans-serif; color: var(--navy); overflow-x: hidden; margin: 0; }
+    h1,h2,h3,h4,h5,h6 { font-family: 'Urbanist', sans-serif; }
+    a { text-decoration: none; }
+
+    /* ══════════════════════════════
+       HERO
+    ══════════════════════════════ */
+    .hero {
+      background: var(--navy);
+      padding: 60px 0 56px;
+      position: relative; overflow: hidden;
+      border-bottom: 3px solid var(--teal);
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -120px; right: -120px;
+      width: 480px; height: 480px;
+      background: radial-gradient(circle, rgba(63,208,201,.12) 0%, transparent 65%);
+      border-radius: 50%; pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; bottom: -100px; left: -80px;
+      width: 360px; height: 360px;
+      background: radial-gradient(circle, rgba(63,208,201,.07) 0%, transparent 65%);
+      border-radius: 50%; pointer-events: none;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: linear-gradient(90deg, #3fd0c9 0%, #70f07f 100%); border: none;
+      color: #051c2d;
+      font-family: 'Urbanist', sans-serif; font-weight: 700; font-size: .76rem;
+      padding: 6px 14px; border-radius: 50px;
+      text-transform: uppercase; letter-spacing: .6px; margin-bottom: 18px;
+    }
+    .hero h1 {
+      color: #fff;
+      font-size: clamp(1.9rem, 4.2vw, 3rem);
+      font-weight: 900; line-height: 1.12; margin-bottom: 16px;
+    }
+    .hero h1 span {
+      background: linear-gradient(90deg, #3fd0c9 0%, #70f07f 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      color: rgba(255,255,255,.75); font-size: 1.02rem;
+      line-height: 1.75; margin-bottom: 26px; max-width: 500px;
+    }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 26px; }
+    .badge-pill {
+      display: flex; align-items: center; gap: 6px;
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2);
+      color: rgba(255,255,255,.9);
+      font-family: 'Urbanist', sans-serif; font-weight: 600; font-size: .78rem;
+      padding: 5px 13px; border-radius: 50px;
+    }
+    .badge-pill i {
+      background: linear-gradient(90deg, #3fd0c9 0%, #70f07f 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-description { margin-top: 4px; }
+    .hero-description p {
+      color: rgba(255,255,255,.7); font-size: .93rem; line-height: 1.78;
+      margin-bottom: 12px;
+    }
+    .hero-description p:last-child { margin-bottom: 0; }
+
+    /* ══════════════════════════════
+       ENROLLMENT CARD
+    ══════════════════════════════ */
+    .enroll-card {
+      background: #fff; border: 1px solid var(--border);
+      border-radius: 16px; box-shadow: 0 4px 28px rgba(16,40,58,.1);
+      padding: 28px;
+    }
+    .btn-enroll {
+      display: block; width: 100%; text-align: center;
+      font-family: 'Urbanist', sans-serif; font-weight: 800; font-size: .82rem;
+      padding: 13px 20px; border-radius: 10px; border: none; transition: all .2s;
+      text-transform: uppercase; letter-spacing: .07em;
+    }
+    .btn-enroll-teal { background: linear-gradient(90deg, #3fd0c9 0%, #70f07f 100%); color: #051c2d; }
+    .btn-enroll-teal:hover {
+      background: linear-gradient(90deg, #6ff081 0.1%, #42d2c4 99.9%);
+      color: #051c2d; transform: translateY(-1px);
+      box-shadow: 0 5px 18px rgba(63,208,201,.35);
+    }
+    .enroll-price-block {
+      text-align: center;
+      padding: 14px 0 16px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 16px;
+    }
+    .enroll-price {
+      font-family: 'Urbanist', sans-serif; font-weight: 900;
+      font-size: 2.6rem; color: var(--navy); line-height: 1;
+    }
+    .enroll-price-sub { font-size: .75rem; color: var(--gray-lt); margin-top: 4px; }
+    .pc-more {
+      display: block; width: 100%; margin-top: 10px;
+      background: linear-gradient(90deg, #067b5a 0%, #051c2d 100%); border: none;
+      border-radius: 10px; padding: 12px 16px;
+      font-family: 'Urbanist', sans-serif; font-weight: 800; font-size: .8rem;
+      color: #fff; text-align: center;
+      cursor: pointer; transition: background .2s, color .2s;
+      letter-spacing: .06em; text-transform: uppercase;
+    }
+    .pc-more:hover { background: linear-gradient(90deg, #6ff081 0.1%, #42d2c4 99.9%); color: #051c2d; }
+    .enroll-topics { margin: 16px 0 4px; }
+    .enroll-topics-label {
+      font-family: 'Urbanist', sans-serif; font-weight: 700; font-size: .7rem;
+      text-transform: uppercase; letter-spacing: .08em;
+      color: var(--gray-lt); margin-bottom: 8px;
+    }
+    .enroll-topics ul { list-style: none; padding: 0; margin: 0; }
+    .enroll-topics ul li {
+      display: flex; align-items: flex-start; gap: 7px;
+      font-size: .78rem; color: var(--gray); line-height: 1.4;
+      padding: 4px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .enroll-topics ul li:last-child { border-bottom: none; }
+    .enroll-topics ul li::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: linear-gradient(90deg, #3fd0c9 0%, #70f07f 100%);
+      flex-shrink: 0; margin-top: 5px;
+    }
+    .enroll-guarantee {
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+      margin-top: 14px; color: var(--gray-lt); font-size: .76rem;
+    }
+    .enroll-guarantee i {
+      background: linear-gradient(90deg, #3fd0c9 0%, #70f07f 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ══════════════════════════════
+       STATS STRIP
+    ══════════════════════════════ */
+    .stats-strip { background: var(--navy); padding: 26px 0; }
+    .stat-num {
+      font-family: 'Urbanist', sans-serif; font-weight: 900; font-size: 2rem; line-height: 1;
+      background: linear-gradient(90deg, #3fd0c9 0%, #70f07f 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat-lbl { color: rgba(255,255,255,.55); font-size: .78rem; margin-top: 3px; }
+  </style>
+</head>
+<body>
+
+<!--
+=================================================
+  ELEMENTOR BUILD GUIDE — HERO + STATS STRIP
+=================================================
+STRUCTURE:
+  1. Hero Section  (navy bg, 2-column, 7/5 split)
+  2. Stats Strip   (navy bg, 4-column stat row)
+
+ELEMENTOR MAPPING:
+
+  HERO SECTION:
+    • Section: navy bg (#10283A), padding 60px top / 56px bottom
+    • Bottom border: 3px solid #3fd0c9 (via Advanced > Border or custom CSS)
+    • Decorative radial glows: add via Section > Style > Background Overlay,
+      or custom CSS pseudo-elements (see .hero::before / ::after)
+    • 2 columns: 58% left / 42% right (matches col-lg-7 / col-lg-5)
+
+    LEFT COLUMN — all HTML widgets OR individual widgets:
+      • Eyebrow badge:   HTML widget OR Button widget (gradient bg, pill radius)
+      • H1:              Heading widget — "Annual Refresher" wrapped in <span> for
+                         gradient text (requires custom CSS or HTML widget)
+      • Subtitle:        Text Editor widget
+      • Badge pills:     Icon List widget (4 items) OR HTML widget
+      • Description:     Text Editor widget (3 paragraphs)
+
+    RIGHT COLUMN — HTML widget (entire .enroll-card block):
+      • Enroll Now btn:  WooCommerce Add to Cart widget OR Button widget
+                         linked to /shop/9-hour-hazwoper-refresher/
+      • Price:           WooCommerce Product Price dynamic tag OR static HTML
+      • "View All Versions" btn: HTML widget (triggers modal — see modal section)
+      • Topics list:     HTML widget OR Icon List widget
+      • Guarantee text:  HTML widget OR Text widget
+
+  STATS STRIP:
+    • Section: navy bg (#10283A), padding 26px top/bottom
+    • 4 equal columns (col-6 col-md-3)
+    • Each column: Heading widget (gradient text via custom CSS) + Text widget
+    • OR: single HTML widget for the full row
+
+DYNAMIC DATA NOTES:
+  • Price ($39.95):     WooCommerce dynamic price tag or ACF field
+  • Enroll URL:         WooCommerce product permalink or shortcode
+  • "View All Versions" modal: HTML widget — see modal-topics markup
+    (add to page footer or Elementor popup trigger)
+
+MODAL NOTE:
+  The "View All Versions & Topics" button opens #modal-topics.
+  Implement as an Elementor Popup widget triggered by button click,
+  OR keep the modal HTML inline and use the JS toggle below.
+=================================================
+-->
+
+
+<!-- ═══════════════════════════════════════════
+     SECTION 2: HERO
+     ─────────────────────────────────────────
+     Elementor: Section — navy bg, 2 columns (7/5)
+     Bottom border via custom CSS:
+       border-bottom: 3px solid #3FD0C9;
+════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="container">
+    <div class="row align-items-center g-5">
+
+      <!-- LEFT: copy + description
+           Elementor: HTML widget OR individual widgets per element -->
+      <div class="col-lg-7">
+
+        <!-- Eyebrow badge
+             Elementor: HTML widget OR Button widget
+             Style: gradient bg, pill border-radius, dark text, uppercase -->
+        <div class="hero-eyebrow"><i class="fas fa-hard-hat"></i> OSHA Annual Requirement</div>
+
+        <!-- H1
+             Elementor: Heading widget
+             "Annual Refresher" needs gradient text — add via custom CSS:
+               .hero h1 span { background: linear-gradient(90deg,#3fd0c9,#70f07f);
+                 -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+             OR use an HTML widget for the full h1 block -->
+        <h1>
+          9-Hour HAZWOPER<br>
+          <span>Annual Refresher</span><br>
+          Training
+        </h1>
+
+        <!-- Subtitle
+             Elementor: Text Editor widget — white/70% opacity text -->
+        <p class="hero-sub">
+          Fulfill your OSHA-required annual HAZWOPER refresher online.
+          Self-paced, mobile-friendly, and accepted at job sites nationwide.
+        </p>
+
+        <!-- Badge pills
+             Elementor: Icon List widget (4 items, horizontal wrap)
+             OR HTML widget -->
+        <div class="badge-row">
+          <div class="badge-pill"><i class="fas fa-laptop"></i> 100% Online</div>
+          <div class="badge-pill"><i class="fas fa-clock"></i> Self-Paced</div>
+          <div class="badge-pill"><i class="fas fa-certificate"></i> Certificate Included</div>
+          <div class="badge-pill"><i class="fas fa-mobile-alt"></i> Mobile Friendly</div>
+        </div>
+
+        <!-- Course description
+             Elementor: Text Editor widget (3 paragraphs)
+             Dynamic tag: Post Content (if pulling from WP editor) -->
+        <div class="hero-description">
+          <p>eTraining's 9-Hour HAZWOPER Annual Refresher is an OSHA-authorized online training program developed to meet the annual retraining requirements of OSHA 29 CFR 1910.120(e)(8). The course is designed for workers who have previously completed 24-hour or 40-hour initial HAZWOPER training and need to fulfill their annual refresher obligation.</p>
+          <p>Delivered 100% online across 9 modules, the course covers updated OSHA regulations, hazard recognition, PPE, decontamination, and emergency response planning. A Certificate of Completion is issued instantly upon passing and is accepted at job sites nationwide.</p>
+          <p>eTraining has been providing HAZWOPER training online for over 14 years — trusted by more than 10,000 workers across all 50 states.</p>
+        </div>
+
+      </div>
+
+      <!-- RIGHT: enrollment card
+           Elementor: HTML widget (entire .enroll-card block)
+           OR break into sub-widgets if simpler:
+             - Button widget (Enroll Now)
+             - Heading widget (price)
+             - HTML widget (topics list + guarantee) -->
+      <div class="col-lg-5">
+        <div class="enroll-card">
+
+          <!-- Enroll CTA
+               Elementor: Button widget OR WooCommerce Add to Cart widget
+               Link: /shop/9-hour-hazwoper-refresher/ -->
+          <a href="/shop/9-hour-hazwoper-refresher/" class="btn-enroll btn-enroll-teal d-block text-center">
+            <i class="fas fa-shopping-cart me-2"></i> Enroll Now
+          </a>
+
+          <!-- Price
+               Elementor: Heading widget with WooCommerce dynamic price tag
+               OR static HTML: replace $39.95 with shortcode/dynamic field -->
+          <div class="enroll-price-block">
+            <div class="enroll-price">$39.95</div>
+            <div class="enroll-price-sub">Per person &bull; No subscription required</div>
+          </div>
+
+          <!-- View All Versions button
+               Elementor: Button widget OR HTML widget
+               Triggers #modal-topics (see modal note above) -->
+          <button class="pc-more"
+            onclick="document.getElementById('modal-topics').classList.add('open')"
+            aria-haspopup="dialog" aria-controls="modal-topics">
+            <i class="fas fa-layer-group me-2"></i> View All Versions &amp; Topics &rarr;
+          </button>
+
+          <!-- Topics bullets
+               Elementor: Icon List widget OR HTML widget -->
+          <div class="enroll-topics">
+            <div class="enroll-topics-label">Topics Covered</div>
+            <ul>
+              <li>HAZWOPER Regulations Review (29 CFR 1910.120)</li>
+              <li>Hazard Recognition &amp; Chemical Properties</li>
+              <li>Personal Protective Equipment (PPE)</li>
+              <li>Respiratory Protection &amp; NIOSH Standards</li>
+              <li>Decontamination Procedures</li>
+              <li>Emergency Response Planning</li>
+              <li>Site Safety &amp; Health Plans</li>
+              <li>Medical Surveillance Requirements</li>
+              <li>RCRA &amp; Emergency Response Updates</li>
+            </ul>
+          </div>
+
+          <!-- Guarantee
+               Elementor: Icon Box widget OR Text widget -->
+          <div class="enroll-guarantee">
+            <i class="fas fa-shield-alt"></i>
+            30-Day Satisfaction Guarantee &bull; No Hidden Fees
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     STATS STRIP
+     ─────────────────────────────────────────
+     Elementor: Section — navy bg, padding 26px top/bottom
+     4 equal columns (or 2-col on mobile via responsive settings)
+     Each stat: Heading widget (gradient text) + Text widget
+     Gradient text on stat numbers via custom CSS:
+       .stat-num { background: linear-gradient(90deg,#3fd0c9,#70f07f);
+         -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+════════════════════════════════════════════ -->
+<div class="stats-strip">
+  <div class="container">
+    <div class="row text-center g-4">
+      <div class="col-6 col-md-3">
+        <div class="stat-num">10K+</div>
+        <div class="stat-lbl">Workers Certified</div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="stat-num">4.9★</div>
+        <div class="stat-lbl">Average Rating</div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="stat-num">50</div>
+        <div class="stat-lbl">States Accepted</div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="stat-num">100%</div>
+        <div class="stat-lbl">OSHA Compliant</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

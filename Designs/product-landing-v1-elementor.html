@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Landing Page (V1) — Elementor Reference Template</title>
+
+    <!-- Bootstrap 5 (matches original template's grid classes) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        /* =============================================
+           SECTION 1: COURSE BANNER / HERO
+        ============================================= */
+        .course-detail-banner {
+            background-color: #1a2a3a;
+            padding: 60px 0;
+        }
+
+        .banner-blog-detail h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .banner-blog-detail p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #dde3e9;
+        }
+
+        /* Right column info box */
+        .upper-layer-div {
+            background: #fff;
+            color: #333;
+            border-radius: 8px;
+            padding: 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+        }
+
+        /* Video thumbnail */
+        .video-thumbnail {
+            position: relative;
+            cursor: pointer;
+            margin-bottom: 16px;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .video-thumbnail > img {
+            width: 100%;
+            display: block;
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.45);
+            border: none;
+            border-radius: 50%;
+            width: 68px;
+            height: 68px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .play-button:hover {
+            background: rgba(255,102,0,0.8);
+        }
+
+        .play-button img {
+            width: 32px;
+            height: 32px;
+        }
+
+        /* Video modal */
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.88);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-modal.active {
+            display: flex;
+        }
+
+        .video-content {
+            position: relative;
+            width: 90%;
+            max-width: 820px;
+            background: #000;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .video-content iframe {
+            width: 100%;
+            aspect-ratio: 16/9;
+            display: block;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 8px;
+            right: 14px;
+            font-size: 2.2rem;
+            color: #fff;
+            cursor: pointer;
+            z-index: 10;
+            line-height: 1;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+        }
+
+        /* Pricing */
+        .pricing h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #1a2a3a;
+            margin: 12px 0;
+        }
+
+        /* Add to cart button */
+        .cart-new-button {
+            margin-bottom: 16px;
+        }
+
+        .faq-signin {
+            display: block;
+            width: 100%;
+            background: #ff6600;
+            color: #fff;
+            text-align: center;
+            padding: 13px;
+            border-radius: 4px;
+            font-weight: 700;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+            letter-spacing: 1.5px;
+            transition: background 0.2s;
+        }
+
+        .faq-signin:hover {
+            background: #e05500;
+            color: #fff;
+        }
+
+        /* Topics covered */
+        .topics-cover h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #1a2a3a;
+            margin-top: 16px;
+            margin-bottom: 8px;
+            border-top: 1px solid #eee;
+            padding-top: 14px;
+        }
+
+        ul.description.common-description2 {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        ul.description.common-description2 li {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            margin-bottom: 7px;
+        }
+
+        ul.description.common-description2 li::before {
+            content: "✓";
+            color: #ff6600;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .common-para {
+            margin: 0;
+            font-size: 0.88rem;
+            color: #444;
+            line-height: 1.4;
+        }
+
+        /* =============================================
+           SECTION 2: LANGUAGE OPTIONS
+        ============================================= */
+        .course-detail-info2 {
+            background: #f0f4f8;
+            padding: 18px 0;
+            border-top: 1px solid #dce3ea;
+            border-bottom: 1px solid #dce3ea;
+        }
+
+        .course-detail-info2 p {
+            margin: 0;
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        .course-detail-info2 a span {
+            color: #ff6600;
+            font-weight: 600;
+        }
+
+        /* =============================================
+           SECTION 3: COURSE DETAIL / LEFT PITCH
+        ============================================= */
+        .course-detail-info {
+            padding: 52px 0;
+        }
+
+        .course-detail-info h2 {
+            font-size: 1.85rem;
+            font-weight: 700;
+            color: #1a2a3a;
+            margin-bottom: 16px;
+        }
+
+        .course-detail-info p {
+            color: #555;
+            line-height: 1.75;
+        }
+
+        .enroll-now {
+            display: inline-block;
+            padding: 10px 26px;
+            background: #ff6600;
+            color: #fff;
+            border-radius: 4px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .enroll-now:hover {
+            background: #e05500;
+            color: #fff;
+        }
+
+        .preview-btn {
+            display: inline-block;
+            padding: 10px 26px;
+            border: 2px solid #ff6600;
+            color: #ff6600;
+            border-radius: 4px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .preview-btn:hover {
+            background: #ff6600;
+            color: #fff;
+        }
+
+        .etrain-secondary-btn {
+            display: inline-block;
+            padding: 10px 26px;
+            border: 2px solid #1a2a3a;
+            color: #1a2a3a;
+            border-radius: 4px;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .etrain-secondary-btn:hover {
+            background: #1a2a3a;
+            color: #fff;
+        }
+
+        /* =============================================
+           SECTION 4: SERVICES / WHY WE ARE THE BEST
+        ============================================= */
+        .about-section {
+            background: #1a2a3a;
+            padding: 64px 0;
+        }
+
+        .about-section h2.best {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 14px;
+        }
+
+        .about-section p.desc {
+            text-align: center;
+            max-width: 680px;
+            margin: 0 auto 20px;
+            color: #aabbc8;
+            line-height: 1.7;
+        }
+
+        .read-more-div {
+            text-align: center;
+            margin-bottom: 44px;
+        }
+
+        .read-more-btn {
+            display: inline-block;
+            padding: 11px 30px;
+            background: #ff6600;
+            color: #fff;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: background 0.2s;
+        }
+
+        .read-more-btn:hover {
+            background: #e05500;
+            color: #fff;
+        }
+
+        /* Desktop: overlapping image layout */
+        .about-img {
+            position: relative;
+            text-align: center;
+            min-height: 420px;
+        }
+
+        .about-img .center-img {
+            max-width: 55%;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .service-card-overlay {
+            position: absolute;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 10px;
+            padding: 16px;
+            max-width: 195px;
+            text-align: left;
+            color: #fff;
+            backdrop-filter: blur(4px);
+        }
+
+        .service-card-overlay img {
+            width: 44px;
+            margin-bottom: 8px;
+        }
+
+        .service-card-overlay h5 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: #fff;
+        }
+
+        .service-card-overlay p {
+            font-size: 0.78rem;
+            color: #aabbc8;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        /* Mobile: stacked service cards */
+        .res-employee-div {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 14px;
+        }
+
+        .res-employee-div img {
+            width: 52px;
+            height: 52px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        .employee-content h5 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 3px;
+        }
+
+        .employee-content p {
+            font-size: 0.82rem;
+            color: #aabbc8;
+            margin: 0;
+        }
+
+        /* =============================================
+           SECTION 5: FAQ ACCORDION
+        ============================================= */
+        .faq-section {
+            padding: 64px 0;
+            background: #fff;
+        }
+
+        .faq-section h2.faq-text {
+            text-align: center;
+            font-size: 1.85rem;
+            font-weight: 700;
+            color: #1a2a3a;
+            margin-bottom: 44px;
+        }
+
+        .accordion-button {
+            font-weight: 600;
+            color: #1a2a3a;
+            font-size: 0.95rem;
+        }
+
+        .accordion-button:not(.collapsed) {
+            color: #ff6600;
+            background-color: #fff9f5;
+            box-shadow: none;
+        }
+
+        .accordion-button:focus {
+            box-shadow: none;
+        }
+
+        .accordion-item {
+            border-color: #e5e9ed;
+            margin-bottom: 4px;
+            border-radius: 6px !important;
+            overflow: hidden;
+        }
+
+        /* =============================================
+           COURSE OUTLINE MODAL
+        ============================================= */
+        .outline_modal .overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.72);
+            z-index: 9998;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .outline_modal .overlay.active {
+            display: flex;
+        }
+
+        .popup {
+            background: #fff;
+            border-radius: 10px;
+            padding: 36px 32px;
+            max-width: 640px;
+            width: 90%;
+            max-height: 82vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            cursor: pointer;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f0f0f0;
+            border-radius: 50%;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .popup-close:hover {
+            background: #e0e0e0;
+        }
+
+        .popup-content h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1a2a3a;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #ff6600;
+        }
+
+        .popup-content p {
+            color: #444;
+            line-height: 1.6;
+        }
+
+        /* =============================================
+           RESPONSIVE ADJUSTMENTS
+        ============================================= */
+        @media (max-width: 991px) {
+            .upper-layer-div {
+                margin-top: 32px;
+            }
+
+            .course-detail-banner {
+                padding: 40px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!--
+=================================================
+  ELEMENTOR BUILD GUIDE — READ BEFORE BUILDING
+=================================================
+Each section below maps to Elementor sections/widgets.
+Replace placeholder content with real dynamic data.
+
+DYNAMIC DATA NOTES:
+  - Product price:        WooCommerce product field or shortcode
+  - Add to Cart button:   WooCommerce "Add to Cart" widget or [add_to_cart id="PRODUCT_ID"]
+  - Enroll/Preview btns: Custom PHP in HTML widget or shortcode
+  - FAQ items:            Elementor Accordion widget, populated from CPT "faq"
+  - Services items:       Elementor Icon Box widgets, populated from CPT "services"
+  - Outline modal:        Elementor HTML widget (paste JS + modal HTML together)
+  - Language options:     Conditional HTML widget (check if meta field is populated)
+  - Structured data:      Add JSON-LD via Elementor > Advanced > Custom Code, or via plugin
+=================================================
+-->
+
+
+<!-- =============================================
+     SECTION 1: COURSE BANNER / HERO
+     ─────────────────────────────────────────
+     Elementor mapping:
+       • Section: dark bg (#1a2a3a), 2 columns (8/4)
+       • Left col: Heading widget + Text Editor widget
+       • Right col: HTML widget (entire .upper-layer-div block)
+         OR break into sub-widgets if preferred:
+           - Image widget (thumbnail)
+           - Heading widget (price)
+           - Button widget (add to cart)
+           - Icon List widget (topics)
+============================================= -->
+<div class="container-fluid blog-page blog-detail-page course-detail-banner">
+    <div class="container">
+        <div class="row">
+
+            <!-- LEFT: Course title + page content -->
+            <div class="col-md-12 col-lg-8">
+                <div class="banner-blog-detail text-white">
+
+                    <!-- Elementor: Heading widget -->
+                    <!-- Dynamic tag: Post Title -->
+                    <h1>40-Hour HAZWOPER Training: Full Course Title Here</h1>
+
+                    <!-- Elementor: Text Editor widget -->
+                    <!-- Dynamic tag: Post Content -->
+                    <p>This is the main course description pulled from the WordPress page body (the_content). It explains the course value, what students will accomplish, and any key differentiators.</p>
+                    <p>Add additional paragraphs, bullet lists, or callouts here. This content is managed directly in the WordPress editor for each course landing page.</p>
+
+                </div>
+            </div>
+
+            <!-- RIGHT: Info / conversion box -->
+            <div class="col-md-12 col-lg-4 new-bg">
+                <div class="upper-layer-div">
+
+                    <!-- VIDEO THUMBNAIL + MODAL
+                         Elementor: Use an HTML widget for the entire video block.
+                         Replace the iframe src with the Wistia embed URL from the
+                         "Wistia Embed Video" custom field on the page. -->
+                    <div class="video-thumbnail" id="videoThumb">
+                        <img src="https://placehold.co/400x225/1a2a3a/aabbc8?text=Course+Preview+Thumbnail"
+                             alt="Course Preview Video Thumbnail" />
+                        <button class="play-button" onclick="openVideoModal()">
+                            <!-- Replace with actual play button image from theme /V1/images/play-btn.png -->
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="white">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Video Modal — place HTML near bottom of page or keep inline.
+                         JS handles display toggling. -->
+                    <div class="video-modal" id="videoModal">
+                        <div class="video-content">
+                            <span class="close-modal" onclick="closeVideoModal()">×</span>
+                            <!--
+                                Replace this iframe with the actual Wistia or YouTube embed.
+                                For Wistia: use wp_oembed_get($embedVid) output.
+                                For YouTube: https://www.youtube.com/embed/VIDEO_ID?autoplay=1
+                            -->
+                            <iframe
+                                id="courseVideoIframe"
+                                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                                frameborder="0"
+                                allow="autoplay; fullscreen"
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+
+                    <!-- PRICING
+                         Elementor: Heading widget with WooCommerce dynamic price tag
+                         OR shortcode: [product_price id="PRODUCT_ID"] -->
+                    <div class="pricing">
+                        <h2>$99.00</h2>
+                        <!-- Dynamic: get_woocommerce_currency_symbol() . $_product->price -->
+                    </div>
+
+                    <!-- ADD TO CART BUTTON
+                         Elementor: WooCommerce "Add to Cart" widget
+                         OR shortcode: [add_to_cart id="PRODUCT_ID" style="" show_price="false"]
+                         OR Button widget linking to ?add-to-cart=PRODUCT_ID -->
+                    <div class="cart-new-button">
+                        <a href="?add-to-cart=PRODUCT_ID" class="faq-signin">ADD TO CART</a>
+                        <!--
+                            Original logic: content-enroll-now-button.php template part
+                            handles: already enrolled check, ID card requirement check,
+                            and renders appropriate button state.
+                            Replicate with WooCommerce + custom logic or shortcode.
+                        -->
+                    </div>
+
+                    <!-- TOPICS COVERED
+                         Elementor: Icon List widget OR HTML widget
+                         Source: "Pitch Top Right Title", "Pitch Top Right List 1",
+                                 "Pitch Top Right List 2" custom fields on the page.
+                         The original merges both lists into one combined bullet list. -->
+                    <div class="topics-cover">
+                        <h4>What This Course Covers</h4>
+                        <!-- Dynamic: get_post_meta($id, 'Pitch Top Right Title', true) -->
+                    </div>
+                    <ul class="description common-description2">
+                        <li class="inner-desc topics-cover-points">
+                            <p class="common-para">OSHA HAZWOPER regulations and requirements</p>
+                        </li>
+                        <li class="inner-desc topics-cover-points">
+                            <p class="common-para">Hazardous waste site operations safety</p>
+                        </li>
+                        <li class="inner-desc topics-cover-points">
+                            <p class="common-para">Personal protective equipment (PPE) selection</p>
+                        </li>
+                        <li class="inner-desc topics-cover-points">
+                            <p class="common-para">Air monitoring and decontamination</p>
+                        </li>
+                        <li class="inner-desc topics-cover-points">
+                            <p class="common-para">Emergency response procedures</p>
+                        </li>
+                        <li class="inner-desc topics-cover-points">
+                            <p class="common-para">Medical surveillance requirements</p>
+                        </li>
+                        <!-- Add more <li> items from Pitch Top Right List 1 + List 2 -->
+                    </ul>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- =============================================
+     SECTION 2: LANGUAGE OPTIONS
+     ─────────────────────────────────────────
+     Elementor mapping:
+       • Section: light bg (#f0f4f8), 1 column
+       • HTML widget with conditional visibility
+       • Only render if "Product ID Spanish" or
+         "Product ID English" meta field is set.
+       • Use Elementor conditions or Dynamic Tags
+         with ACF/custom fields plugin.
+     ─────────────────────────────────────────
+     NOTE: Hide this entire section if neither
+     language version exists for this course.
+============================================= -->
+<div class="container-fluid course-detail-info course-detail-info2">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-6">
+
+                <!-- Show for English pages that have a Spanish equivalent -->
+                <!-- Dynamic: check "Product ID Spanish" custom field -->
+                <div>
+                    <p>Need a Spanish version? Check out our
+                        <a href="/spanish-course-slug/" class="text-decoration-none">
+                            <span>Nombre del Curso en Español</span>
+                        </a>
+                    </p>
+                </div>
+
+                <!--
+                Show for Spanish pages that have an English equivalent.
+                Uncomment and populate when needed:
+
+                <div>
+                    <p>Necesita una versión en inglés? mira nuestro curso
+                        <a href="/english-course-slug/" class="text-decoration-none">
+                            <span>English Course Name Here</span>
+                        </a>
+                    </p>
+                </div>
+                -->
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- =============================================
+     SECTION 3: PITCH — LEFT COLUMN
+     ─────────────────────────────────────────
+     Elementor mapping:
+       • Section: white bg, 2 columns (use left 6/12 only)
+       • Heading widget → "Pitch Top Left Title" field
+       • Text Editor widget → "Pitch Top Left Text" field
+       • 3 Button widgets in a flex row:
+           1. Enroll Now (orange, primary)
+           2. Preview Course (outlined orange)
+           3. Outline (outlined dark, triggers modal)
+============================================= -->
+<div class="container-fluid course-detail-info">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-6">
+                <div>
+
+                    <!-- Elementor: Heading widget -->
+                    <!-- Dynamic: get_post_meta($id, 'Pitch Top Left Title', true) -->
+                    <h2>Who Should Take This Course?</h2>
+
+                    <!-- Elementor: Text Editor widget -->
+                    <!-- Dynamic: get_post_meta($id, 'Pitch Top Left Text', true) -->
+                    <p>This course is designed for workers involved in hazardous waste operations, emergency responders, and site safety supervisors. Whether you're fulfilling a compliance requirement or building foundational safety knowledge, this 40-hour course meets OSHA 29 CFR 1910.120 standards.</p>
+
+                    <p>Upon completion, participants will be equipped to safely navigate hazardous environments, select appropriate PPE, and execute emergency response protocols with confidence.</p>
+
+                    <!-- BUTTON ROW
+                         Elementor: Stack 3 buttons in a row using Flexbox layout
+                         or place side by side with a Button widget each. -->
+                    <div class="d-flex flex-lg-row flex-column justify-content-start gap-3 align-items-center mt-4">
+
+                        <!-- 1. Enroll Now / Add to Cart -->
+                        <!-- Same logic as banner button above -->
+                        <a href="?add-to-cart=PRODUCT_ID" class="faq-signin enroll-now">Enroll Now</a>
+
+                        <!-- 2. Preview Course -->
+                        <!-- Dynamic: etr_create_preview_course_link($product_id, $category) -->
+                        <!-- Links to the free preview/demo of the course in the LMS -->
+                        <a href="/preview/course-slug/" class="preview-btn">Preview Course</a>
+
+                        <!-- 3. Course Outline (opens modal) -->
+                        <!-- Only show if "Course Outline" custom field is not empty -->
+                        <!-- Elementor: Button widget + custom JS onclick handler -->
+                        <a class="etrain-secondary-btn px-3 course_outline_btn" href="#">
+                            <span>Outline</span>
+                        </a>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- =============================================
+     SECTION 4: WHY WE ARE THE BEST (Services)
+     ─────────────────────────────────────────
+     Elementor mapping:
+       • Section: dark bg (#1a2a3a)
+       • Heading widget → "Services Section Heading" (from homepage meta)
+       • Text Editor widget → "Services Section Description"
+       • Button widget → "Services Read More Link"
+       • DESKTOP layout (d-none d-md-block):
+           Complex overlapping image — use HTML widget
+           with positioned service cards OR recreate
+           with Elementor's Image widget + Icon Box
+           widgets using absolute positioning via CSS.
+       • MOBILE layout (d-md-none):
+           5× Icon Box widgets in a 1-column section,
+           each with icon image + title + description.
+           Hidden on tablet/desktop.
+     ─────────────────────────────────────────
+     Data source: "services" custom post type,
+     ordered by ID ASC, limited to 5 posts.
+============================================= -->
+<div class="container-fluid about-section">
+    <div class="container">
+
+        <!-- Elementor: Heading widget -->
+        <!-- Dynamic: get_post_meta($home_page_id, 'Services Section Heading', true) -->
+        <h2 class="best">Why We are the Best</h2>
+
+        <!-- Elementor: Text Editor widget -->
+        <!-- Dynamic: get_post_meta($home_page_id, 'Services Section Description', true) -->
+        <p class="desc">We've built the most accessible, compliant, and student-friendly online safety training platform available. Our courses meet OSHA and ANSI standards with content developed by certified industry professionals.</p>
+
+        <div class="read-more-div">
+            <!-- Elementor: Button widget -->
+            <!-- Dynamic: get_post_meta($home_page_id, 'Services Read More Link', true) -->
+            <a class="read-more-btn" href="/about/">Read More</a>
+        </div>
+
+        <div class="row">
+
+            <!-- DESKTOP: Overlapping image layout — use HTML widget in Elementor -->
+            <!-- Original uses absolutely-positioned icons around a central image. -->
+            <!-- Simplest Elementor approach: single HTML widget with all markup. -->
+            <div class="col-md-12">
+                <div class="about-img d-none d-md-block">
+
+                    <!-- Central image: /V1/images/about-img.png + roundcircle.png overlay -->
+                    <!-- Elementor: Image widget, centered -->
+                    <img src="https://placehold.co/580x380/253545/7a99b0?text=Services+Center+Image"
+                         class="center-img" alt="About eTraining" />
+
+                    <!--
+                        5 service posts are positioned around the central image.
+                        Original CSS classes: employee-img, ease-img, badge-img,
+                        customer-img, device-img (position icons), and
+                        employee-div, ease-div, badge-div, customercare-div,
+                        anydevice-div (position text cards).
+
+                        For Elementor: use an HTML widget for this entire block,
+                        or recreate with absolute-positioned Image/Icon Box widgets
+                        (requires custom CSS in Elementor's Custom CSS panel).
+                    -->
+
+                    <!-- Service 1: Expert Instructors (top-left) -->
+                    <div class="service-card-overlay" style="top: 15px; left: 0;">
+                        <img src="https://placehold.co/44x44/ff6600/ffffff?text=1" alt="Expert Instructors" />
+                        <h5>Expert Instructors</h5>
+                        <p>OSHA-certified professionals with real field experience.</p>
+                    </div>
+
+                    <!-- Service 2: Easy to Use (top-right) -->
+                    <div class="service-card-overlay" style="top: 15px; right: 0;">
+                        <img src="https://placehold.co/44x44/ff6600/ffffff?text=2" alt="Easy to Use" />
+                        <h5>Easy to Use</h5>
+                        <p>Intuitive platform with no technical setup required.</p>
+                    </div>
+
+                    <!-- Service 3: Certified Badges (bottom-center) -->
+                    <div class="service-card-overlay" style="bottom: 10px; left: 50%; transform: translateX(-50%);">
+                        <img src="https://placehold.co/44x44/ff6600/ffffff?text=3" alt="Certified Badges" />
+                        <h5>Certified Badges</h5>
+                        <p>Earn industry-recognized certificates on completion.</p>
+                    </div>
+
+                    <!-- Service 4: Customer Care (bottom-left) -->
+                    <div class="service-card-overlay" style="bottom: 10px; left: 0;">
+                        <img src="https://placehold.co/44x44/ff6600/ffffff?text=4" alt="Customer Care" />
+                        <h5>Customer Care</h5>
+                        <p>Dedicated support team ready to help you succeed.</p>
+                    </div>
+
+                    <!-- Service 5: Any Device (bottom-right) -->
+                    <div class="service-card-overlay" style="bottom: 10px; right: 0;">
+                        <img src="https://placehold.co/44x44/ff6600/ffffff?text=5" alt="Any Device" />
+                        <h5>Any Device</h5>
+                        <p>Train on desktop, tablet, or mobile — anytime, anywhere.</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- MOBILE: Stacked service cards (visible on mobile only) -->
+            <!-- Elementor: 5× Icon Box widgets in a 1-column section, set to hide on tablet/desktop -->
+            <div class="col-12 d-md-none">
+
+                <div class="res-employee-div">
+                    <img src="https://placehold.co/52x52/ff6600/ffffff?text=1" alt="Expert Instructors" />
+                    <div class="employee-content">
+                        <h5>Expert Instructors</h5>
+                        <p>OSHA-certified professionals with real field experience.</p>
+                    </div>
+                </div>
+
+                <div class="res-employee-div">
+                    <img src="https://placehold.co/52x52/ff6600/ffffff?text=2" alt="Easy to Use" />
+                    <div class="employee-content">
+                        <h5>Easy to Use</h5>
+                        <p>Intuitive platform with no technical setup required.</p>
+                    </div>
+                </div>
+
+                <div class="res-employee-div">
+                    <img src="https://placehold.co/52x52/ff6600/ffffff?text=3" alt="Certified Badges" />
+                    <div class="employee-content">
+                        <h5>Certified Badges</h5>
+                        <p>Earn industry-recognized certificates on completion.</p>
+                    </div>
+                </div>
+
+                <div class="res-employee-div">
+                    <img src="https://placehold.co/52x52/ff6600/ffffff?text=4" alt="Customer Care" />
+                    <div class="employee-content">
+                        <h5>Customer Care</h5>
+                        <p>Dedicated support team ready to help you succeed.</p>
+                    </div>
+                </div>
+
+                <div class="res-employee-div">
+                    <img src="https://placehold.co/52x52/ff6600/ffffff?text=5" alt="Any Device" />
+                    <div class="employee-content">
+                        <h5>Any Device</h5>
+                        <p>Train on desktop, tablet, or mobile — anytime, anywhere.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- =============================================
+     SECTION 5: FAQ ACCORDION (2-column)
+     ─────────────────────────────────────────
+     Elementor mapping:
+       • Section: white bg
+       • Heading widget ("Frequently Asked Questions")
+       • 2-column inner section
+       • Each column: Accordion widget
+     ─────────────────────────────────────────
+     Data source: "faq" CPT, filtered by taxonomy
+     "faq-group" matching the current page slug.
+     Split into 2 columns: first ceil(n/2) in col 1,
+     remainder in col 2. First item in col 1 is open.
+     ─────────────────────────────────────────
+     Elementor note: Accordion widget doesn't natively
+     support dynamic CPT data. Options:
+       (a) Use Elementor Pro's Loop/Posts widget
+       (b) Use a shortcode that outputs the accordion
+       (c) Use an HTML widget with manually entered FAQs
+           per course page
+============================================= -->
+<div class="container-fluid faq-section faq-coursedetail two-col-faqs">
+    <div class="container">
+
+        <!-- Elementor: Heading widget -->
+        <h2 class="faq-text">Frequently Asked Questions</h2>
+
+        <div class="row">
+
+            <!-- FAQ Column 1 (first half, ceil(total/2)) -->
+            <div class="col-12 col-lg-6">
+                <!-- Elementor: Accordion widget -->
+                <div class="accordion" id="faqAccordion_0">
+
+                    <!-- First item is open by default -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading_faq1">
+                            <button class="accordion-button p-3"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#collapse_faq1"
+                                    aria-expanded="true"
+                                    aria-controls="collapse_faq1">
+                                <span>What is included in this course?</span>
+                            </button>
+                        </h2>
+                        <div id="collapse_faq1"
+                             class="accordion-collapse collapse show"
+                             aria-labelledby="heading_faq1"
+                             data-bs-parent="#faqAccordion_0">
+                            <div class="accordion-body">
+                                <p>This course includes video lectures, interactive quizzes, downloadable reference materials, and a printable certificate of completion. All materials are available 24/7 at your own pace with no expiration on access.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading_faq2">
+                            <button class="accordion-button p-3 collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#collapse_faq2"
+                                    aria-expanded="false"
+                                    aria-controls="collapse_faq2">
+                                <span>How long is this course?</span>
+                            </button>
+                        </h2>
+                        <div id="collapse_faq2"
+                             class="accordion-collapse collapse"
+                             aria-labelledby="heading_faq2"
+                             data-bs-parent="#faqAccordion_0">
+                            <div class="accordion-body">
+                                <p>This is a 40-hour course that can be completed at your own pace. Most students complete it over 5–10 days when studying a few hours per day.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading_faq3">
+                            <button class="accordion-button p-3 collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#collapse_faq3"
+                                    aria-expanded="false"
+                                    aria-controls="collapse_faq3">
+                                <span>Is this course OSHA-accepted?</span>
+                            </button>
+                        </h2>
+                        <div id="collapse_faq3"
+                             class="accordion-collapse collapse"
+                             aria-labelledby="heading_faq3"
+                             data-bs-parent="#faqAccordion_0">
+                            <div class="accordion-body">
+                                <p>Yes. This course is designed to meet the requirements of OSHA 29 CFR 1910.120. Upon completion you will receive a certificate that is accepted by employers and regulatory agencies.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- FAQ Column 2 (remaining items) -->
+            <div class="col-12 col-lg-6">
+                <!-- Elementor: Accordion widget -->
+                <div class="accordion" id="faqAccordion_1">
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading_faq4">
+                            <button class="accordion-button p-3 collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#collapse_faq4"
+                                    aria-expanded="false"
+                                    aria-controls="collapse_faq4">
+                                <span>What are the system requirements?</span>
+                            </button>
+                        </h2>
+                        <div id="collapse_faq4"
+                             class="accordion-collapse collapse"
+                             aria-labelledby="heading_faq4"
+                             data-bs-parent="#faqAccordion_1">
+                            <div class="accordion-body">
+                                <p>Any modern web browser on desktop, tablet, or mobile works. No plugins or downloads required. A stable internet connection is recommended for video playback.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading_faq5">
+                            <button class="accordion-button p-3 collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#collapse_faq5"
+                                    aria-expanded="false"
+                                    aria-controls="collapse_faq5">
+                                <span>Can I get a refund?</span>
+                            </button>
+                        </h2>
+                        <div id="collapse_faq5"
+                             class="accordion-collapse collapse"
+                             aria-labelledby="heading_faq5"
+                             data-bs-parent="#faqAccordion_1">
+                            <div class="accordion-body">
+                                <p>We offer a satisfaction guarantee. Contact our support team within 30 days of purchase if you're not satisfied and we'll make it right.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="heading_faq6">
+                            <button class="accordion-button p-3 collapsed"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#collapse_faq6"
+                                    aria-expanded="false"
+                                    aria-controls="collapse_faq6">
+                                <span>How do I receive my certificate?</span>
+                            </button>
+                        </h2>
+                        <div id="collapse_faq6"
+                             class="accordion-collapse collapse"
+                             aria-labelledby="heading_faq6"
+                             data-bs-parent="#faqAccordion_1">
+                            <div class="accordion-body">
+                                <p>After passing all module quizzes and the final exam, your certificate is automatically generated and available to download as a PDF from your account dashboard.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- =============================================
+     COURSE OUTLINE MODAL
+     ─────────────────────────────────────────
+     Elementor mapping:
+       • HTML widget placed anywhere on the page
+         (bottom of page recommended)
+       • Paste the JS block into Elementor >
+         Advanced > Custom JS (page level)
+         OR include it in the HTML widget itself.
+       • .course_outline_btn anywhere on the page
+         will trigger this modal on click.
+     ─────────────────────────────────────────
+     Content: get_post_meta($id, 'Course Outline', true)
+     Only show Outline button if this field is non-empty.
+============================================= -->
+<div class="outline_modal">
+    <div class="overlay" id="overlay">
+        <div class="popup">
+            <a class="popup-close" onclick="closeOutlineModal()" href="#">✕</a>
+            <div class="popup-content">
+
+                <!-- Dynamic: wpautop(get_post_meta($id, 'Course Outline', true)) -->
+                <h3>Course Outline</h3>
+                <p><strong>Module 1:</strong> Introduction to HAZWOPER — Regulations, scope, and your rights as a worker.</p>
+                <p><strong>Module 2:</strong> Hazardous Waste Site Operations — Site characterization, work zones, and controls.</p>
+                <p><strong>Module 3:</strong> Personal Protective Equipment — Selection, donning/doffing, and limitations.</p>
+                <p><strong>Module 4:</strong> Air Monitoring and Sampling — Equipment types and interpretation of results.</p>
+                <p><strong>Module 5:</strong> Decontamination — Procedures for personnel, equipment, and vehicles.</p>
+                <p><strong>Module 6:</strong> Emergency Response and Spill Control — Incident command and emergency action plans.</p>
+                <p><strong>Module 7:</strong> Medical Surveillance — Requirements under 1910.120(f).</p>
+                <p><strong>Final Exam:</strong> Comprehensive assessment covering all modules.</p>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--
+=================================================
+  STRUCTURED DATA (JSON-LD)
+=================================================
+  Elementor: Add via Elementor Pro > Custom Code
+  (Settings > Custom Code > Head), or use an SEO
+  plugin (RankMath / Yoast) with schema integration.
+
+  Two schemas are output by the original template:
+  1. Course schema (with offer, rating, reviews)
+  2. Product schema
+
+  Replace all placeholder values with dynamic data.
+  In Elementor you'll need a Custom Code block or
+  a plugin like WPCode to inject these dynamically.
+=================================================
+-->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "40-Hour HAZWOPER Training Course Name",
+    "description": "Short product description from WooCommerce goes here.",
+    "provider": {
+        "@type": "Organization",
+        "name": "eTraining Inc.",
+        "sameAs": "https://etraintoday.com"
+    },
+    "hasCourseInstance": {
+        "@type": "CourseInstance",
+        "courseMode": "Online",
+        "offers": {
+            "@type": "Offer",
+            "price": "99.00",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock",
+            "url": "https://etraintoday.com/course-slug/"
+        }
+    },
+    "audience": {
+        "@type": "Audience",
+        "audienceType": "Hazardous waste workers, emergency responders"
+    },
+    "educationalUse": "Compliance training, professional development",
+    "teaches": "OSHA 29 CFR 1910.120",
+    "educationalLevel": "Beginner to Intermediate",
+    "about": ["Construction", "Manufacturing", "Environmental Services"]
+}
+</script>
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": "40-Hour HAZWOPER Training Course Name",
+    "image": "https://etraintoday.com/wp-content/uploads/course-image.jpg",
+    "offers": {
+        "@type": "Offer",
+        "priceCurrency": "USD",
+        "price": "99.00",
+        "availability": "https://schema.org/InStock"
+    },
+    "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "reviewCount": "142"
+    }
+}
+</script>
+
+
+<!--
+=================================================
+  GA4 DATALAYER — view_item EVENT
+=================================================
+  Elementor: Paste into Elementor > Advanced >
+  Custom JS (page level), or use GTM with a
+  trigger on this page template.
+
+  Replace placeholder values with actual product
+  data using Dynamic Tags or WooCommerce hooks.
+=================================================
+-->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            'event': 'view_item',
+            'ecommerce': {
+                'items': [{
+                    item_name:     'Course Name Here',       // Replace: $_product->get_name()
+                    item_id:       'PRODUCT_ID',             // Replace: $product_id (WC product ID)
+                    price:         99.00,                    // Replace: $_product->price
+                    item_category: 'Safety Training'         // Replace: $productCatNamesArr[0]
+                }]
+            }
+        });
+    });
+</script>
+
+
+<!-- Bootstrap 5 JS (required for accordion + collapse) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // =============================================
+    // VIDEO MODAL
+    // Elementor: paste into Custom JS or HTML widget
+    // =============================================
+    function openVideoModal() {
+        document.getElementById('videoModal').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeVideoModal() {
+        document.getElementById('videoModal').classList.remove('active');
+        document.body.style.overflow = '';
+        // Stop video playback by resetting iframe src
+        var iframe = document.getElementById('courseVideoIframe');
+        if (iframe) {
+            var src = iframe.src;
+            iframe.src = '';
+            iframe.src = src;
+        }
+    }
+
+    // Close on overlay click
+    document.getElementById('videoModal').addEventListener('click', function (e) {
+        if (e.target === this) closeVideoModal();
+    });
+
+    // =============================================
+    // COURSE OUTLINE MODAL
+    // Elementor: paste into Custom JS or HTML widget
+    // =============================================
+    function openOutlineModal(e) {
+        if (e) e.preventDefault();
+        document.getElementById('overlay').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeOutlineModal() {
+        document.getElementById('overlay').classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // Close on overlay background click
+    document.getElementById('overlay').addEventListener('click', function (e) {
+        if (e.target === this) closeOutlineModal();
+    });
+
+    // Trigger from any .course_outline_btn on the page
+    document.querySelectorAll('.course_outline_btn').forEach(function (btn) {
+        btn.addEventListener('click', function (e) {
+            e.preventDefault();
+            openOutlineModal();
+        });
+    });
+
+    // Escape key closes both modals
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+            closeVideoModal();
+            closeOutlineModal();
+        }
+    });
+</script>
+
+</body>
+</html>

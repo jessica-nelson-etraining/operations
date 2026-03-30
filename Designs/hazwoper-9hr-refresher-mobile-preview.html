@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mobile Preview — 9-Hour HAZWOPER Refresher</title>
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #0f1117;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 32px 24px 60px;
+      font-family: 'Urbanist', system-ui, sans-serif;
+    }
+
+    /* ── Top bar ── */
+    .preview-bar {
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .preview-title {
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: .02em;
+    }
+    .preview-title span {
+      background: linear-gradient(90deg, #3fd0c9, #70f07f);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .preview-meta {
+      color: rgba(255,255,255,.4);
+      font-size: .75rem;
+      font-weight: 500;
+    }
+
+    /* ── Device switcher ── */
+    .device-switcher {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .device-btn {
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.12);
+      color: rgba(255,255,255,.6);
+      font-family: 'Urbanist', system-ui, sans-serif;
+      font-size: .75rem; font-weight: 700;
+      padding: 6px 14px; border-radius: 20px;
+      cursor: pointer;
+      transition: all .15s;
+      white-space: nowrap;
+    }
+    .device-btn:hover { background: rgba(255,255,255,.12); color: #fff; }
+    .device-btn.active {
+      background: linear-gradient(90deg, #3fd0c9, #70f07f);
+      border-color: transparent; color: #051c2d;
+    }
+
+    /* ── Device info label ── */
+    .device-label {
+      color: rgba(255,255,255,.35);
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+      text-align: center;
+    }
+
+    /* ── Phone frame ── */
+    .phone-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .phone-frame {
+      background: #1c1c1e;
+      border-radius: 52px;
+      padding: 14px;
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,.08),
+        0 0 0 3px #2a2a2e,
+        0 0 0 4px rgba(255,255,255,.05),
+        0 40px 80px rgba(0,0,0,.7),
+        inset 0 1px 0 rgba(255,255,255,.1);
+      position: relative;
+      transition: all .3s ease;
+    }
+
+    /* Side buttons */
+    .phone-frame::before {
+      content: '';
+      position: absolute;
+      left: -4px; top: 110px;
+      width: 4px; height: 34px;
+      background: #2a2a2e;
+      border-radius: 2px 0 0 2px;
+      box-shadow: 0 44px 0 #2a2a2e, 0 88px 0 #2a2a2e;
+    }
+    .phone-frame::after {
+      content: '';
+      position: absolute;
+      right: -4px; top: 140px;
+      width: 4px; height: 60px;
+      background: #2a2a2e;
+      border-radius: 0 2px 2px 0;
+    }
+
+    .phone-screen {
+      border-radius: 40px;
+      overflow: hidden;
+      position: relative;
+      background: #fff;
+    }
+
+    /* Dynamic Island notch */
+    .phone-notch {
+      position: absolute;
+      top: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px; height: 34px;
+      background: #1c1c1e;
+      border-radius: 20px;
+      z-index: 10;
+      box-shadow: 0 0 0 2px rgba(255,255,255,.05);
+    }
+
+    /* Status bar overlay */
+    .phone-status-bar {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 54px;
+      background: linear-gradient(to bottom, rgba(255,255,255,.95) 60%, transparent);
+      z-index: 9;
+      display: flex;
+      align-items: flex-start;
+      padding: 14px 24px 0;
+      justify-content: space-between;
+      pointer-events: none;
+    }
+    .status-time {
+      font-size: .72rem; font-weight: 700;
+      color: #1c1c1e; letter-spacing: -.01em;
+    }
+    .status-icons {
+      display: flex; align-items: center; gap: 5px;
+    }
+    .status-bar-icon {
+      width: 16px; height: 8px;
+      background: #1c1c1e; border-radius: 2px;
+      opacity: .8;
+    }
+    .status-signal {
+      display: flex; align-items: flex-end; gap: 2px; height: 10px;
+    }
+    .status-signal span {
+      background: #1c1c1e; border-radius: 1px; width: 3px;
+    }
+
+    .phone-screen iframe {
+      border: none;
+      display: block;
+      /* width/height set by JS */
+    }
+
+    /* Home indicator */
+    .phone-home {
+      width: 120px; height: 5px;
+      background: rgba(255,255,255,.25);
+      border-radius: 3px;
+      margin: 10px auto 2px;
+    }
+
+    /* ── Scroll hint ── */
+    .scroll-hint {
+      margin-top: 20px;
+      display: flex; align-items: center; gap: 8px;
+      color: rgba(255,255,255,.25);
+      font-size: .73rem; font-weight: 600; letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+    .scroll-hint::before,
+    .scroll-hint::after {
+      content: '';
+      display: block; width: 32px; height: 1px;
+      background: rgba(255,255,255,.15);
+    }
+
+    /* ── Open in browser link ── */
+    .open-link {
+      margin-top: 28px;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      color: rgba(255,255,255,.55);
+      font-size: .78rem; font-weight: 700;
+      padding: 9px 20px; border-radius: 20px;
+      text-decoration: none;
+      transition: all .15s;
+    }
+    .open-link:hover {
+      background: rgba(255,255,255,.1);
+      color: rgba(255,255,255,.85);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top bar -->
+  <div class="preview-bar">
+    <div>
+      <div class="preview-title">Mobile Preview — <span>9-Hr HAZWOPER Refresher</span></div>
+      <div class="preview-meta" id="deviceMeta">iPhone 15 Pro &nbsp;·&nbsp; 393 × 852 px</div>
+    </div>
+    <div class="device-switcher">
+      <button class="device-btn active" onclick="setDevice(393, 852, 'iPhone 15 Pro', '393 × 852 px', this)">iPhone 15 Pro</button>
+      <button class="device-btn" onclick="setDevice(375, 667, 'iPhone SE', '375 × 667 px', this)">iPhone SE</button>
+      <button class="device-btn" onclick="setDevice(360, 800, 'Galaxy S23', '360 × 800 px', this)">Galaxy S23</button>
+      <button class="device-btn" onclick="setDevice(412, 915, 'Pixel 7', '412 × 915 px', this)">Pixel 7</button>
+    </div>
+  </div>
+
+  <!-- Phone -->
+  <div class="phone-wrap">
+    <div class="device-label" id="deviceLabel">iPhone 15 Pro &nbsp;·&nbsp; 393 × 852 px</div>
+
+    <div class="phone-frame" id="phoneFrame">
+      <div class="phone-screen" id="phoneScreen">
+        <!-- Dynamic Island -->
+        <div class="phone-notch"></div>
+
+        <!-- Status bar -->
+        <div class="phone-status-bar">
+          <div class="status-time">9:41</div>
+          <div class="status-icons">
+            <div class="status-signal">
+              <span style="height:3px"></span>
+              <span style="height:5px"></span>
+              <span style="height:7px"></span>
+              <span style="height:9px"></span>
+            </div>
+            <svg width="16" height="12" viewBox="0 0 24 16" fill="#1c1c1e" opacity=".8">
+              <rect x="0" y="3" width="15" height="10" rx="2" stroke="#1c1c1e" stroke-width="1.5" fill="none"/>
+              <rect x="1.5" y="4.5" width="10" height="7" rx="1" fill="#1c1c1e"/>
+              <rect x="15.5" y="6" width="2" height="4" rx="1" fill="#1c1c1e" opacity=".5"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- The actual page in iframe -->
+        <iframe
+          id="previewFrame"
+          src="hazwoper-9hr-refresher.html"
+          title="Mobile Preview"
+          scrolling="yes">
+        </iframe>
+      </div>
+      <div class="phone-home"></div>
+    </div>
+
+    <div class="scroll-hint">Scroll inside frame to preview full page</div>
+
+    <a href="hazwoper-9hr-refresher.html" target="_blank" class="open-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M19 19H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"/>
+      </svg>
+      Open Full Page in Browser
+    </a>
+  </div>
+
+  <script>
+    var FRAME_PADDING = 28; // 14px each side inside phone frame
+
+    function setDevice(w, h, name, label, btn) {
+      // Update active button
+      document.querySelectorAll('.device-btn').forEach(function(b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+
+      // Update labels
+      document.getElementById('deviceMeta').textContent = name + '  ·  ' + label;
+      document.getElementById('deviceLabel').textContent = name + '  ·  ' + label;
+
+      // Resize iframe and screen
+      var iframe  = document.getElementById('previewFrame');
+      var screen  = document.getElementById('phoneScreen');
+      var frame   = document.getElementById('phoneFrame');
+      var notch   = document.querySelector('.phone-notch');
+
+      iframe.style.width  = w + 'px';
+      iframe.style.height = h + 'px';
+      screen.style.width  = w + 'px';
+      screen.style.height = h + 'px';
+
+      // Adjust notch size for smaller phones
+      if (w <= 375) {
+        notch.style.width  = '90px';
+        notch.style.height = '28px';
+      } else {
+        notch.style.width  = '120px';
+        notch.style.height = '34px';
+      }
+    }
+
+    // Init at default size
+    (function init() {
+      var iframe = document.getElementById('previewFrame');
+      var screen = document.getElementById('phoneScreen');
+      iframe.style.width  = '393px';
+      iframe.style.height = '852px';
+      screen.style.width  = '393px';
+      screen.style.height = '852px';
+    })();
+  </script>
+
+</body>
+</html>
